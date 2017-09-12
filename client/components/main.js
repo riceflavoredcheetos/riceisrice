@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-import Sidebar from './sidebar'
+import Product from './allProducts'
 
 /**
  * COMPONENT
@@ -15,11 +15,33 @@ const Main = (props) => {
   const {children, handleClick, isLoggedIn} = props
 
   return (
-    <div>
-      <h1>Rice is Rice</h1>
 
-      {children}
-    </div>
+      <div className="jumbotron full-width">
+
+
+      <div id="intro">
+        <div className="content">
+          <h1>Rice is Rice</h1>
+          <h3>Shop the new Grains</h3>
+        </div>
+      </div>
+
+      <div className="row content" id="feature">
+        <h3>FEATURED PRODUCTS</h3>
+
+        <a href="{{ site_url('shop') }}" className="btn btn-default">SHOP MORE</a>
+      </div>
+
+          <div className="row" id="intro-info">
+                <div id="intro-text">
+                  <img src="{{ theme.introImage }}" alt="4"/>
+                </div>
+         </div>
+         <div>
+            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSySVA6wazyBjYxAFlkygw4nujTE9KA-bhsKf4tbqbz7bcNY38A"/>
+         </div>
+      </div>
+
   )
 }
 
