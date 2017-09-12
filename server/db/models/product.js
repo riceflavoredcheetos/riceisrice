@@ -10,6 +10,10 @@ const Product = db.define('product', {
     type: Sequelize.TEXT,
     allowNull: true
   },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   price: {
     type: Sequelize.FLOAT,
     allowNull: false,
