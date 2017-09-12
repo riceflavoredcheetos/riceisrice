@@ -36,5 +36,14 @@ router.put('/:productId', (req, res, next) => {
         .catch(next)
 })
 
+//admin feature : deleteproduct
+router.delete('/:productId', (req, res, next) => {
+    let id = req.params.productId;
+
+    Product.destroy({where: {id}})
+        .then(() => res.sendStatus(204))
+        .catch(next)
+})
+
 
 module.exports = router;
