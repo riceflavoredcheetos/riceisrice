@@ -15,6 +15,13 @@ const Order = db.define('order', {
     validate: {
       min: 0
     }
+  },
+  invoiceId: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 1
+    }
   }
 })
 
