@@ -4,6 +4,7 @@ const Review = require("./review");
 const Order = require("./order");
 const Category = require("./category");
 const categoryType = require("./categoryType");
+//change to productcategory*****************
 
 Product.belongsToMany(Category, { through: categoryType });
 Category.belongsToMany(Product, { through: categoryType });
