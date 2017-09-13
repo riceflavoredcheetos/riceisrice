@@ -1,49 +1,54 @@
-const router = require('express').Router();
-const {Product} = require('../db/models');
+const router = require("express").Router();
+const { Product, categoryType } = require("../db/models");
 
 //get all products
-router.get('/', (req, res, next) => {
-    Product.findAll()
-        .then(products => res.json(products))
-        .catch(next);
-})
+router.get("/", (req, res, next) => {
+  Product.findAll({
+    order: [["id", "DESC"]]
+  })
+    .then(products => res.json(products))
+    .catch(next);
+});
 
 //get single product
-router.get('/:productId', (req, res, next ) => {
-    let productId = req.params.productId;
+router.get("/:productId", (req, res, next) => {
+  let productId = req.params.productId;
 
-    Product.findById(productId)
-        .then(singleProduct => res.json(singleProduct))
-        .catch(next)
-})
+  Product.findById(productId)
+    .then(singleProduct => res.json(singleProduct))
+    .catch(next);
+});
 
-
-//admin feature : post new product
-router.post('/', (req, res, next) => {
-    Product.create(req.body)
-        .then(newProduct => res.json(newProduct))
-        .catch(next);
-})
-
+//admin feature : post new product and categoryType
+router.post("/", (req, res, next) => {
+  Product.create(req.body)
+    .then(newProduct => res.json(newProduct))
+    .then(() =>
+      categoryType.create({
+        productId: req.body.id,
+        categoryId: req.body.categoryId
+      })
+    )
+    .catch(next);
+});
 
 //admin feature : update product
-router.put('/:productId', (req, res, next) => {
-    let productId = req.params.productId;
+router.put("/:productId", (req, res, next) => {
+  let productId = req.params.productId;
 
-    Product.findById(productId)
-        .then(singleProduct => singleProduct.update(req.body))
-        .then(updatedProduct => res.json(updatedProduct))
-        .catch(next)
-})
+  Product.findById(productId)
+    .then(singleProduct => singleProduct.update(req.body))
+    .then(updatedProduct => res.json(updatedProduct))
+    .catch(next);
+});
 
-//admin feature : deleteproduct
-router.delete('/:productId', (req, res, next) => {
-    let id = req.params.productId;
+//admin feature : delete product & reviews tied to the specific product
+router.delete("/:productId", (req, res, next) => {
+  let id = req.params.productId;
 
-    Product.destroy({where: {id}})
-        .then(() => res.sendStatus(204))
-        .catch(next)
-})
-
+  Product.destroy({ where: { id } })
+    .then(() => res.sendStatus(204))
+    .catch(next);
+});
 
 module.exports = router;

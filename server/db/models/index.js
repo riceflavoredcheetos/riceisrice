@@ -7,7 +7,7 @@ const categoryType = require("./categoryType");
 
 Product.belongsToMany(Category, { through: categoryType });
 Category.belongsToMany(Product, { through: categoryType });
-Review.belongsTo(Product);
+Product.hasMany(Review, {onDelete: 'cascade'});
 User.hasMany(Order);
 Product.hasMany(Order);
 
