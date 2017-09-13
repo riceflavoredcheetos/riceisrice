@@ -14,6 +14,7 @@ import TopNavBar from './TopNavBar'
  */
 const Main = (props) => {
   const {children, handleClick, isLoggedIn} = props
+
   const style = {
     "backgroundImage": "url(https://cdn.theconversation.com/files/90353/wide_article/width1356x668/dydjpgbz-1438275949.jpg)",
     "backgroundSize": "cover",
@@ -24,20 +25,22 @@ const Main = (props) => {
   }
   const Font = {
     'position': "absolute",
-    'top': "10px",
-    'left': "0",
-    'right': "0",
-    'bottom': "0",
-    'margin': "auto",
+    'display':'table-cell',
+    'width': '100%',
+    'height':'100%',
     'textAlign':'center',
-    'height':'100px',
+    'verticalAlign':'center',
     'fontFamily' : "Open Sans",
-    'color': '#fff'
+    'color': '#fff',
+    'marginTop': '15%'
+  }
+  const fixed = {
+    'position':'fixed'
   }
 
   return (
     <div>
-    <TopNavBar/>
+    <TopNavBar stlyle = {fixed} />
       <div className="jumbotron full-width" style = {style}>
       <h1 style = {Font}>Got Rice?</h1>
       </div>
@@ -52,6 +55,7 @@ const Main = (props) => {
 
         <a className = 'row content' style = {Center}>SHOP MORE</a>
       </div>
+      <Product />
     </div>
   )
 }
