@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
+import {getAllProducts} from '../store/allProducts'
 
 export default class Product extends React.Component{
 
@@ -35,9 +36,10 @@ export default class Product extends React.Component{
     }
   }
 
+
   render(){
     const rice = this.state.rice
-
+    console.log("RICE:", rice)
     return (
           //WHEN PRODUCTS IS LOADED//
           //THIS NEEDS TO BE A TABLE LAYOUT
