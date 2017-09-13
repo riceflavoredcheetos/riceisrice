@@ -6,7 +6,9 @@ const invoice = db.define("invoice", {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
-      isIn: [["Created", "Processing", "Cancelled", "Completed"]]
+      isIn: [
+        ["Created", "Processing", "Cancelled", "Completed"]
+      ]
     }
   },
   address: {
