@@ -3,8 +3,6 @@ const {User} = require('../db/models')
 module.exports = router
 
 
-
-
 //Get all users 
 router.get('/', (req, res, next) => {
   User.findAll({
@@ -24,15 +22,8 @@ router.get('/:userId', (req, res, next) => {
 })
 
 
-//create new user 
-router.post('/', (req, res, next) => {
-  User.create(req.body)
-    .then(newUsers => res.json(newUsers))
-    .catch(next)
-})
 
-
-//delete user 
+//Admin : delete user 
 router.delete('/:userId', (req, res, next) => {
   let id = req.params.userId;
 

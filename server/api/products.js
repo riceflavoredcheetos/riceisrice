@@ -19,27 +19,32 @@ router.get("/:productId", (req, res, next) => {
     .catch(next);
 });
 
-//admin feature : post new product and categoryType
-router.post("/", (req, res, next) => {
-  Product.create(req.body)
-    .then(newProduct => res.json(newProduct))
-    .then(() =>
-      categoryType.create({
-        productId: req.body.id,
-        categoryId: req.body.categoryId
-      })
-    )
-    .catch(next);
-});
+// admin feature : post new product and categoryType
+router.post("/", async (req, res, next) => {
+    try {
+        const newProduct = await Product.create(req.body)
+        await categoryType.create({
+            productId: req.body.id,
+            categoryId: req.body.categoryId
+        })
+        res.json(newProduct)
+    } catch (err) {
+        next(err)
+    }   
+}); 
+
 
 //admin feature : update product
-router.put("/:productId", (req, res, next) => {
+router.put("/:productId", async (req, res, next) => {
   let productId = req.params.productId;
 
-  Product.findById(productId)
-    .then(singleProduct => singleProduct.update(req.body))
-    .then(updatedProduct => res.json(updatedProduct))
-    .catch(next);
+  try {
+      const product = await Product.findById(productId)
+      const updated = await product.update(req.body)
+      res.json(updated)
+  } catch(err) {
+      next(err)
+  }
 });
 
 //admin feature : delete product & reviews tied to the specific product
