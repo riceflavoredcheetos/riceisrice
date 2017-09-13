@@ -2,9 +2,9 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Category = db.define('category', {
-  country: {
+  type: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   }
 })
 
