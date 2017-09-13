@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Product from './allProducts'
+import TopNavBar from './TopNavBar'
 
 /**
  * COMPONENT
@@ -13,35 +14,45 @@ import Product from './allProducts'
  */
 const Main = (props) => {
   const {children, handleClick, isLoggedIn} = props
+  const style = {
+    "backgroundImage": "url(https://cdn.theconversation.com/files/90353/wide_article/width1356x668/dydjpgbz-1438275949.jpg)",
+    "backgroundSize": "cover",
+    "height":'500px'
+  }
+  const Center = {
+    'textAlign': 'center'
+  }
+  const Font = {
+    'position': "absolute",
+    'top': "10px",
+    'left': "0",
+    'right': "0",
+    'bottom': "0",
+    'margin': "auto",
+    'textAlign':'center',
+    'height':'100px',
+    'fontFamily' : "Open Sans",
+    'color': '#fff'
+  }
 
   return (
-
-      <div className="jumbotron full-width">
-
-
+    <div>
+    <TopNavBar/>
+      <div className="jumbotron full-width" style = {style}>
+      <h1 style = {Font}>Got Rice?</h1>
+      </div>
       <div id="intro">
         <div className="content">
-          <h1>Rice is Rice</h1>
-          <h3>Shop the new Grains</h3>
+          <h3 style = {Center}>Shop the new Grains</h3>
         </div>
       </div>
 
       <div className="row content" id="feature">
-        <h3>FEATURED PRODUCTS</h3>
+        <h3 style ={Center}>FEATURED PRODUCTS</h3>
 
-        <a href="{{ site_url('shop') }}" className="btn btn-default">SHOP MORE</a>
+        <a className = 'row content' style = {Center}>SHOP MORE</a>
       </div>
-
-          <div className="row" id="intro-info">
-                <div id="intro-text">
-                  <img src="{{ theme.introImage }}" alt="4"/>
-                </div>
-         </div>
-         <div>
-            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSySVA6wazyBjYxAFlkygw4nujTE9KA-bhsKf4tbqbz7bcNY38A"/>
-         </div>
-      </div>
-
+    </div>
   )
 }
 
