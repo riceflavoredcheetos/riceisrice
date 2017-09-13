@@ -1,12 +1,12 @@
 # TEAM RICE FLAVORED CHEETOS NORMS
 
 #### What does this group do when two or more members disagree (ex. on a technical approach, a technology choice, etc)? Do you vote? Does the whole group get involved? Do you get someone else to decide? ####
-_- Call open discussion until issue is resolved. Allocate time 1 hour at maximum to resolve conflicts._
+_- Call open discussion until issue is resolved. Allocate time 1 hour at maximum to resolve conflicts. If nothing has been resolved, bring in a Instructor or fellow to assist._
 
 
 
 #### What does this group do when a member is frustrated? What strategy do you use to talk about it? What do you do if you’re the frustrated person? What do you do if you’re the person someone is frustrated with? ####
-_- Get a beer. Be open, dont be tough guy._
+_- Get a beer. Be open, dont be tough guy. If things ever get serious, the safety word would be 'cheetos' where the group responds with undivided attention until any tension has been resolved._
 
 
 
