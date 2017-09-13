@@ -5,6 +5,7 @@ const invoice = db.define("invoice", {
   status: {
     type: Sequelize.STRING,
     allowNull: false,
+    defaultValue: "Created",
     validate: {
       isIn: [
         ["Created", "Processing", "Cancelled", "Completed"]
@@ -13,7 +14,7 @@ const invoice = db.define("invoice", {
   },
   address: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   }
 });
 
