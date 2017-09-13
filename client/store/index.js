@@ -3,6 +3,8 @@ import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import user from './user'
 
+//ADD REDUCERS HERE
+
 const reducer = combineReducers({user})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
