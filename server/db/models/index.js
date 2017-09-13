@@ -2,23 +2,22 @@ const User = require("./user");
 const Product = require("./product");
 const Review = require("./review");
 const Order = require("./order");
+const Invoice = require("./invoice");
 const Category = require("./category");
-const categoryType = require("./categoryType");
-//change to productcategory*****************
+const productType = require("./productType");
 
-Product.belongsToMany(Category, { through: categoryType });
-Category.belongsToMany(Product, { through: categoryType });
+Product.belongsToMany(Category, { through: productType });
+Category.belongsToMany(Product, { through: productType });
 Product.hasMany(Review, {onDelete: 'cascade'});
-User.hasMany(Order);
-Product.hasMany(Order);
+Invoice.hasMany(Order);
+Invoice.belongsTo(User, { through: Invoice });
 
 module.exports = {
   User,
   Product,
   Review,
   Order,
+  Invoice,
   Category,
-  categoryType
+  productType
 };
-
-

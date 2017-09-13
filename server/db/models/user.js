@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require("sequelize");
+const db = require("../db");
 
-const User = db.define('user', {
+const User = db.define("user", {
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -13,10 +13,15 @@ const User = db.define('user', {
   password: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  isGuest: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   }
-})
+});
 
-module.exports = User
+module.exports = User;
 
 /**
  * instanceMethods

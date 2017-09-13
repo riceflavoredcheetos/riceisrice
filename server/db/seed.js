@@ -4,12 +4,12 @@ const {
   Product,
   Review,
   Category,
-  categoryType,
-  Order
+  productType,
+  Order,
+  Invoice
 } = require("../db/models");
 
-const users = [
-  {
+const users = [{
     email: "luke@riceisrice.com",
     password: "luke777"
   },
@@ -27,13 +27,11 @@ const users = [
   }
 ];
 
-const products = [
-  {
+const products = [{
     id: 1,
     title: "iPhone X",
     description: "Apple's new iPhone",
-    image:
-      "http://i1.mirror.co.uk/incoming/article11129208.ece/ALTERNATES/s615/iPhone-X-box-leaked.jpg",
+    image: "http://i1.mirror.co.uk/incoming/article11129208.ece/ALTERNATES/s615/iPhone-X-box-leaked.jpg",
     price: 1000.0,
     inventory: 5
   },
@@ -41,8 +39,7 @@ const products = [
     id: 2,
     title: "MacBook Pro with Touch Bar",
     description: "Apple's high-end laptop",
-    image:
-      "https://cnet2.cbsistatic.com/img/wd-2myeZ62IKbNCATa11Cn1Si2A=/770x433/2017/06/06/dd40dd8d-e24b-4859-82e8-5848e5922109/apple-macbook-pro-touch-bar-15-inch-2017-4194.jpg",
+    image: "https://cnet2.cbsistatic.com/img/wd-2myeZ62IKbNCATa11Cn1Si2A=/770x433/2017/06/06/dd40dd8d-e24b-4859-82e8-5848e5922109/apple-macbook-pro-touch-bar-15-inch-2017-4194.jpg",
     price: 2400.0,
     inventory: 1
   },
@@ -50,8 +47,7 @@ const products = [
     id: 3,
     title: "Jordan's Grandfather Rice (10lb)",
     description: "organic, hand-picked rice from Korea",
-    image:
-      "http://www.nutribrownrice.com/images/articles/white-brown-red02.jpg",
+    image: "http://www.nutribrownrice.com/images/articles/white-brown-red02.jpg",
     price: 88.0,
     inventory: 5
   },
@@ -59,15 +55,13 @@ const products = [
     id: 4,
     title: "Luke's Girlfriend Rice (10lb)",
     description: "feminine, aromatic rice from China",
-    image:
-      "http://www.nutribrownrice.com/images/articles/white-brown-red03.jpg",
+    image: "http://www.nutribrownrice.com/images/articles/white-brown-red03.jpg",
     price: 77.0,
     inventory: 1
   }
 ];
 
-const reviews = [
-  {
+const reviews = [{
     content: "Way too expensive for a cellphone",
     productId: 1
   },
@@ -101,8 +95,7 @@ const reviews = [
   }
 ];
 
-const categories = [
-  {
+const categories = [{
     id: 1,
     type: "United States of America"
   },
@@ -124,8 +117,7 @@ const categories = [
   }
 ];
 
-const categoryTypes = [
-  {
+const productTypes = [{
     productId: 1,
     categoryId: 1
   },
@@ -151,8 +143,13 @@ const categoryTypes = [
   }
 ];
 
-const orders = [
-  {
+const invoices = [{
+  status: "Created",
+  address: "99 John Street Unit XXX, New York, NY, 10038",
+  userId: 1
+}];
+
+const orders = [{
     quantity: 3,
     orderPrice: 88.0,
     userId: 1,
@@ -177,22 +174,24 @@ const orders = [
 
 const seed = () =>
   Promise.all(users.map(user => User.create(user)))
-    .then(() => Promise.all(products.map(product => Product.create(product))))
-    .then(() => Promise.all(reviews.map(review => Review.create(review))))
-    .then(() =>
-      Promise.all(categories.map(category => Category.create(category)))
-    )
-    .then(() =>
-      Promise.all(categoryTypes.map(type => categoryType.create(type)))
-    )
-    .then(() => Promise.all(orders.map(order => Order.create(order))));
+  .then(() => Promise.all(products.map(product => Product.create(product))))
+  .then(() => Promise.all(reviews.map(review => Review.create(review))))
+  .then(() =>
+    Promise.all(categories.map(category => Category.create(category)))
+  )
+  .then(() => Promise.all(productTypes.map(type => productType.create(type))))
+  .then(() => Promise.all(invoices.map(invoice => Invoice.create(invoice))))
+  .then(() => Promise.all(orders.map(order => Order.create(order))))
+  .then(() => console.log("Seeding complete!"));
 
 const main = () => {
   console.log("Syncing db...");
   db
-    .sync({ force: true })
+    .sync({
+      force: true
+    })
     .then(() => {
-      console.log("Seeding databse...");
+      console.log("Seeding database...");
       return seed();
     })
     .catch(err => {
