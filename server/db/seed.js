@@ -4,8 +4,9 @@ const {
   Product,
   Review,
   Category,
-  categoryType,
-  Order
+  productType,
+  Order,
+  Invoice
 } = require("../db/models");
 
 const users = [
@@ -124,7 +125,7 @@ const categories = [
   }
 ];
 
-const categoryTypes = [
+const productTypes = [
   {
     productId: 1,
     categoryId: 1
@@ -148,6 +149,14 @@ const categoryTypes = [
   {
     productId: 4,
     categoryId: 3
+  }
+];
+
+const invoices = [
+  {
+    status: "Created",
+    address: "99 John Street Unit XXX, New York, NY, 10038",
+    userId: 1
   }
 ];
 
@@ -182,17 +191,17 @@ const seed = () =>
     .then(() =>
       Promise.all(categories.map(category => Category.create(category)))
     )
-    .then(() =>
-      Promise.all(categoryTypes.map(type => categoryType.create(type)))
-    )
-    .then(() => Promise.all(orders.map(order => Order.create(order))));
+    .then(() => Promise.all(productTypes.map(type => productType.create(type))))
+    .then(() => Promise.all(invoices.map(invoice => Invoice.create(invoice))))
+    .then(() => Promise.all(orders.map(order => Order.create(order))))
+    .then(() => console.log("Seeding complete!"));
 
 const main = () => {
   console.log("Syncing db...");
   db
     .sync({ force: true })
     .then(() => {
-      console.log("Seeding databse...");
+      console.log("Seeding database...");
       return seed();
     })
     .catch(err => {
