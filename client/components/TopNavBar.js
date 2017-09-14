@@ -7,6 +7,16 @@ export default class TopNavBar extends React.Component{
       this.state = {}
     }
 
+    handleClick() {
+      let trigger = true;
+      console.log('clicked');
+      if (trigger) {
+        return (<loginPage />)
+      }
+
+      !trigger
+    }
+
   render() {
 
     return(
@@ -24,6 +34,7 @@ export default class TopNavBar extends React.Component{
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+
           <ul className="nav navbar-nav">
             <li><a href="#">About<span className="sr-only"></span></a></li>
             <li><a href="#">Shop</a></li>
@@ -40,16 +51,20 @@ export default class TopNavBar extends React.Component{
               </ul>
             </li>
           </ul>
+
           <form className="navbar-form navbar-left" role="search">
             <div className="form-group">
               <input type="text" className="form-control" placeholder="Special Brand?"/>
             </div>
             <button type="submit" className="btn btn-default">Search</button>
           </form>
+
           <ul className="nav navbar-nav navbar-right">
+
             <li><Link to = '/cart'>Cart</Link></li>
             <li><a href="#">Login</a></li>
           </ul>
+
         </div>
       </div>
     </nav>

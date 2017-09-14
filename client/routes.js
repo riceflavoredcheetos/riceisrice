@@ -13,6 +13,7 @@ import Checkout from './components/CheckoutPage'
 
 
 import {me} from './store'
+import loginPage from './components/loginPage'
 
 
 /**
@@ -35,7 +36,7 @@ class Routes extends Component {
           <TopNavBar style= {fixed} />
           <Switch>
             {/* Routes placed here are available to all visitors */}
-            <Route path='/login' component={Login} />
+            <Route path='/login' component={loginPage} />
             <Route path='/signup' component={Signup} />
             {
               isLoggedIn &&
