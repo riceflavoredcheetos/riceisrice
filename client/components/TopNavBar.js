@@ -63,7 +63,7 @@ export default class TopNavBar extends React.Component{
           </form>
 
           <ul className="nav navbar-nav navbar-right">
-            <Link to="/login">Login</Link>
+            <li><a href="/login">Login<span className="sr-only"></span></a></li>
           </ul>
 
         </div>

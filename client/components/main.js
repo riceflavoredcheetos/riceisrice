@@ -5,6 +5,7 @@ import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Product from './allProducts'
 import TopNavBar from './TopNavBar'
+import LoginPage from './loginPage'
 
 /**
  * COMPONENT
@@ -41,6 +42,7 @@ const Main = (props) => {
   return (
     <div>
     <TopNavBar stlyle = {fixed} />
+    <LoginPage />
       <div className="jumbotron full-width" style = {style}>
       <h1 style = {Font}>Got Rice?</h1>
       </div>
