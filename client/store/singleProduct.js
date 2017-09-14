@@ -4,24 +4,23 @@ import axios from 'axios'
  * ACTION TYPES
  */
 
-export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_PRODUCT = 'GET_PRODUCT'
 
 /**
  * ACTION CREATORSget
  */
 
- export const getProducts = product => ({type:GET_PRODUCTS, product})
+ export const getProduct = product => ({type:GET_PRODUCT, product})
 
  /**
  * THUNK CREATORS
  */
 
- export const getAllProducts = () =>
+ export const getSingleProduct = (productId) =>
     dispatch =>
-      axios.get('/api/products')
+      axios.get(`/api/products/${productId}`)
         .then( res =>{
-          console.log(res.data, "resdata")
-          dispatch(getProducts(res.data))})
+          dispatch(getProduct(res.data))})
         .catch(err => console.log(err))
 
 /**
@@ -30,7 +29,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS'
 
  export default function (state = [], action) {
    switch (action.type) {
-     case GET_PRODUCTS:
+     case GET_PRODUCT:
         return action.product
      default:
         return state

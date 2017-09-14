@@ -248,6 +248,9 @@ th {
   .navbar {
     display: none;
   }
+  .navbar-inverse {
+    margin: 0px;
+  }
   .btn > .caret,
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
