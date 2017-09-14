@@ -63,7 +63,43 @@ const products = [
     image:
       "http://www.nutribrownrice.com/images/articles/white-brown-red03.jpg",
     price: 77.0,
+    inventory: 2
+  },
+  {
+    id: 5,
+    title: "Anuj's Wife Rice (10lb)",
+    description: "fresh married wife cooked rice from Nepal",
+    image:
+      "http://insiyatrading.com/wp-content/uploads/2016/05/rice-1.png",
+    price: 99.0,
+    inventory: 4
+  },
+  {
+    id: 6,
+    title: "Denis' Rice is Rice (10lb)",
+    description: "super premium rice to blow your mouth",
+    image:
+      "http://www.rcelconnect.org/wp-content/uploads/2017/05/18446555_10156216410760550_1498699364306771099_n.jpg",
+    price: 200.0,
     inventory: 1
+  },
+  {
+    id: 7,
+    title: "Sushi Rice (10lb)",
+    description: "rice from Japan",
+    image:
+      "https://mms17-makemysushi.netdna-ssl.com/wp-content/uploads/2016/02/rice0-min.jpg",
+    price: 20.0,
+    inventory: 15
+  },
+  {
+    id: 8,
+    title: "Random Rice (10lb)",
+    description: "randomly chosen rice",
+    image:
+      "https://s.yimg.com/ny/api/res/1.2/PD3mxO9nmwZVXinvA1srOg--/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/http://magazines.zenfs.com/resizer/2.0/original/eSenGVuoU_XrmAmvsYgWducJP3U",
+    price: 15.0,
+    inventory: 10
   }
 ];
 
