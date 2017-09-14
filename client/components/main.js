@@ -6,6 +6,7 @@ import {logout} from '../store'
 import Product from './allProducts'
 
 
+
 /**
  * COMPONENT
  *  The Main component is our 'picture frame' - it displays the navbar and anything

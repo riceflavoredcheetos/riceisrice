@@ -10,6 +10,7 @@ Product.belongsToMany(Category, { through: productType });
 Category.belongsToMany(Product, { through: productType });
 Product.hasMany(Review, {onDelete: 'cascade'});
 Invoice.hasMany(Order);
+Product.hasMany(Order);
 Invoice.belongsTo(User, { through: Invoice });
 
 module.exports = {

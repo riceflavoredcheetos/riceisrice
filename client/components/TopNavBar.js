@@ -1,8 +1,6 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
 
-
-
 export default class TopNavBar extends React.Component{
     constructor(){
       super()
