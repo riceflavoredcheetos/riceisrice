@@ -11,7 +11,7 @@ router.put('/', (req, res, next) => {
     .then(user => {
         if (user) {
             req.session.userId = user.id;
-            res.json(user);
+            res.status(200).json(user);
         } else {
             res.sendStatus(404);
         }

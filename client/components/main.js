@@ -5,7 +5,7 @@ import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Product from './allProducts'
 import TopNavBar from './TopNavBar'
-import LoginPage from './loginPage'
+import LoginPage  from './loginPage'
 
 /**
  * COMPONENT
