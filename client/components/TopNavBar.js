@@ -36,7 +36,7 @@ export default class TopNavBar extends React.Component{
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 
           <ul className="nav navbar-nav">
-            <li><a href="#">About<span className="sr-only"></span></a></li>
+            <li><Link to = "/about">About</Link></li>
             <li><a href="#">Shop</a></li>
             <li className="dropdown">
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span className="caret"></span></a>
@@ -62,7 +62,7 @@ export default class TopNavBar extends React.Component{
           <ul className="nav navbar-nav navbar-right">
 
             <li><Link to = '/cart'>Cart</Link></li>
-            <li><a href="#">Login</a></li>
+            <li><Link to = '/'>Login</Link></li>
           </ul>
 
         </div>

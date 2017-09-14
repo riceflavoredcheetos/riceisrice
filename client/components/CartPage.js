@@ -6,7 +6,7 @@ import {logout} from '../store'
 
 
 
-export const Cart = () => {
+const Cart = () => {
 
 
 
@@ -25,14 +25,14 @@ export const Cart = () => {
  * CONTAINER
  */
 
-//  const mapState = (state) => {
+ const mapState = (state) => {
 
 
-//  }
+ }
 
-//  const mapDispatch = (dispatch) =>{
+ const mapDispatch = (dispatch) =>{
 
 
-//  }
+ }
 
-//  export default withRouter(connect(mapState, mapDispatch)(Cart))
+ export default withRouter(connect(mapState, mapDispatch)(Cart))
