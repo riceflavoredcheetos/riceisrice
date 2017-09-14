@@ -52,13 +52,6 @@ export default class TopNavBar extends React.Component{
             </li>
           </ul>
 
-          <form className="navbar-form navbar-left" role="search">
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Special Brand?"/>
-            </div>
-            <button type="submit" className="btn btn-default">Search</button>
-          </form>
-
           <ul className="nav navbar-nav navbar-right">
 
             <li><Link to = '/cart'>Cart</Link></li>

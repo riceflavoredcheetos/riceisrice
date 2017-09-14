@@ -55,6 +55,7 @@ const Main = (props) => {
         <h3 style ={Center}>FEATURED PRODUCTS</h3>
 
       </div>
+      <hr style={{height:'20px'}}/>
       <Product />
     </div>
   )

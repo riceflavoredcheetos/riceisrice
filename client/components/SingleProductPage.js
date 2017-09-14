@@ -13,7 +13,7 @@ const SingleProduct = () => {
   return (
     <div>
         <h1>SingleProduct Page</h1>
-        <Reviews />
+        <Review />
     </div>
 
   )

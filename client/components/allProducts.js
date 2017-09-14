@@ -12,6 +12,7 @@ export default class Product extends React.Component{
     this.state = {
       rice:[
         {
+          id:707,
           name: 'white',
           quantity: 25,
           price: 5,
@@ -19,6 +20,7 @@ export default class Product extends React.Component{
           Region: 'U.S.A'
         },
         {
+          id:69,
           name: 'Cantonese',
           quantity: 44,
           price: 2,
@@ -26,6 +28,7 @@ export default class Product extends React.Component{
           Region: 'CHINA'
         },
         {
+          id: 42,
           name: 'Black Truffle',
           quantity: 7,
           price: 50,
@@ -39,17 +42,25 @@ export default class Product extends React.Component{
 
   render(){
     const rice = this.state.rice
+    console.log("AllProductsComponent")
+    console.log("Rice:", rice)
     return (
           //WHEN PRODUCTS IS LOADED//
           //THIS NEEDS TO BE A TABLE LAYOUT
       <div>
       <h1>ALL PRODUCTS</h1>
-      <table>
+      <div className = "list-group">
       {
-        rice.map( rices => {
-        })
+        rice.map( item => {
+
+        return(
+            <Link to ={`/product/${item.id}`} className="list-group-item" key = {item.id}>
+            <h4 className="list-group-item-heading">{item.name}</h4>
+            <p className="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius  blandit.</p>
+            </Link>
+        )})
       }
-      </table>
+      </div>
       </div>
     )
   }
