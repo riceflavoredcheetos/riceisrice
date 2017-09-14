@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
 
 
-const Checkout = () => {
+
+const About = () => {
 
 
 
@@ -13,7 +13,7 @@ const Checkout = () => {
 
       return (
         <div>
-            <h1>CheckOut Page</h1>
+            <h1>ABOUT RICE????</h1>
         </div>
       )
 }
@@ -33,4 +33,4 @@ const Checkout = () => {
 
  }
 
- export default withRouter(connect(mapState, mapDispatch)(Checkout))
+ export default withRouter(connect(mapState, mapDispatch)(About))

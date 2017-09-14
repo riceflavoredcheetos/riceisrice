@@ -5,7 +5,8 @@ import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Review from './Reviews'
 
-export const SingleProduct = () => {
+
+const SingleProduct = () => {
 
 
 
@@ -23,14 +24,14 @@ export const SingleProduct = () => {
  * CONTAINER
  */
 
-// const mapState = (state) => {
+const mapState = (state) => {
 
 
-// }
+}
 
-// const mapDispatch = (dispatch) =>{
+const mapDispatch = (dispatch) =>{
 
 
-// }
+}
 
-// export default withRouter(connect(mapState, mapDispatch)(SingleProduct))
+export default withRouter(connect(mapState, mapDispatch)(SingleProduct))

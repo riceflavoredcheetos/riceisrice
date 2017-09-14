@@ -10,7 +10,7 @@ import TopNavBar from './components/TopNavBar'
 import SingleProduct from './components/SingleProductPage'
 import Cart from './components/CartPage'
 import Checkout from './components/CheckoutPage'
-
+import About from './components/about'
 
 import {me} from './store'
 import loginPage from './components/loginPage'
@@ -46,11 +46,12 @@ class Routes extends Component {
                 </Switch>
             }
             {/* Displays our Login component as a fallback */}
-            <Route component={Login} />
+            <Route exact path = '/' component={Login} />
             <Route exact path = '/product' component = {Main} />
             <Route path = '/product/:productId' component = {SingleProduct} />
             <Route exact path = '/cart' component = {Cart} />
             <Route path = '/cart/checkout' component = {Checkout} />
+            <Route path = '/about' component = {About} />
           </Switch>
         </div>
       </Router>
