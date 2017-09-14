@@ -39,7 +39,6 @@ export default class Product extends React.Component{
 
   render(){
     const rice = this.state.rice
-    console.log("RICE:", rice)
     return (
           //WHEN PRODUCTS IS LOADED//
           //THIS NEEDS TO BE A TABLE LAYOUT
