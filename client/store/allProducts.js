@@ -7,7 +7,7 @@ import axios from 'axios'
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 
 /**
- * ACTION CREATORS
+ * ACTION CREATORSget
  */
 
  export const getProducts = product => ({type:GET_PRODUCTS, products})

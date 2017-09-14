@@ -1,8 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
-import loginPage from './loginPage'
-
-
+import {withRouter, Link} from 'react-router-dom'
 
 export default class TopNavBar extends React.Component{
     constructor(){
@@ -33,13 +30,13 @@ export default class TopNavBar extends React.Component{
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">Home</a>
+          <Link className="navbar-brand" to = '/product'>Home</Link>
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 
           <ul className="nav navbar-nav">
-            <li><a href="#">About<span className="sr-only"></span></a></li>
+            <li><Link to = "/about">About</Link></li>
             <li><a href="#">Shop</a></li>
             <li className="dropdown">
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span className="caret"></span></a>
@@ -55,15 +52,13 @@ export default class TopNavBar extends React.Component{
             </li>
           </ul>
 
-          <form className="navbar-form navbar-left" role="search">
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Special Brand?"/>
-            </div>
-            <button type="submit" className="btn btn-default">Search</button>
-          </form>
-
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="/login">Login<span className="sr-only"></span></a></li>
+
+
+
+            <li><Link to = '/cart'>Cart</Link></li>
+            <li><Link to = '/'>Login</Link></li>
+
           </ul>
 
         </div>

@@ -4,8 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Product from './allProducts'
-import TopNavBar from './TopNavBar'
-import LoginPage  from './loginPage'
+
 
 /**
  * COMPONENT
@@ -15,6 +14,7 @@ import LoginPage  from './loginPage'
  */
 const Main = (props) => {
   const {children, handleClick, isLoggedIn} = props
+  console.log("MAIN")
 
   const style = {
     "backgroundImage": "url(https://cdn.theconversation.com/files/90353/wide_article/width1356x668/dydjpgbz-1438275949.jpg)",
@@ -41,8 +41,7 @@ const Main = (props) => {
 
   return (
     <div>
-    <TopNavBar stlyle = {fixed} />
-    <LoginPage />
+
       <div className="jumbotron full-width" style = {style}>
       <h1 style = {Font}>Got Rice?</h1>
       </div>
@@ -55,8 +54,8 @@ const Main = (props) => {
       <div className="row content" id="feature">
         <h3 style ={Center}>FEATURED PRODUCTS</h3>
 
-        <a className = 'row content' style = {Center}>SHOP MORE</a>
       </div>
+      <hr style={{height:'20px'}}/>
       <Product />
     </div>
   )
