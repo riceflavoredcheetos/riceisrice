@@ -13,7 +13,7 @@ import Checkout from './components/CheckoutPage'
 import About from './components/about'
 
 import {me} from './store'
-import loginPage from './components/loginPage'
+import LoginPage from './components/loginPage'
 
 
 /**
@@ -36,16 +36,18 @@ class Routes extends Component {
           <TopNavBar style= {fixed} />
           <Switch>
             {/* Routes placed here are available to all visitors */}
-            <Route path='/login' component={loginPage} />
+            <Route path='/login' component={LoginPage} />
+            {/* {console.log('clicked')} */}
             <Route path='/signup' component={Signup} />
-            {
-              isLoggedIn &&
-                <Switch>
-                  {/* Routes placed here are only available after logging in */}
-                  <Route path='/home' component={UserHome} />
-                </Switch>
-            }
+              {
+                isLoggedIn &&
+                  <Switch>
+                    {/* Routes placed here are only available after logging in */}
+                    <Route path='/home' component={UserHome} />
+                  </Switch>
+              }
             {/* Displays our Login component as a fallback */}
+
             <Route exact path = '/' component={Login} />
             <Route exact path = '/product' component = {Main} />
             <Route path = '/product/:productId' component = {SingleProduct} />
