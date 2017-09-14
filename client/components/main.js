@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Product from './allProducts'
-import TopNavBar from './topNavBar'
+
+
 
 /**
  * COMPONENT
@@ -12,8 +13,9 @@ import TopNavBar from './topNavBar'
  *  else common to our entire app. The 'picture' inside the frame is the space
  *  rendered out by the component's `children`.
  */
-const Main = (props) => {
+export const Main = (props) => {
   const {children, handleClick, isLoggedIn} = props
+  Console.log("MAIN")
 
   const style = {
     "backgroundImage": "url(https://cdn.theconversation.com/files/90353/wide_article/width1356x668/dydjpgbz-1438275949.jpg)",
@@ -40,7 +42,6 @@ const Main = (props) => {
 
   return (
     <div>
-    <TopNavBar stlyle = {fixed} />
       <div className="jumbotron full-width" style = {style}>
       <h1 style = {Font}>Got Rice?</h1>
       </div>
@@ -63,23 +64,23 @@ const Main = (props) => {
 /**
  * CONTAINER
  */
-const mapState = (state) => {
-  return {
-    isLoggedIn: !!state.user.id
-  }
-}
+// const mapState = (state) => {
+//   return {
+//     isLoggedIn: !!state.user.id
+//   }
+// }
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleClick () {
-      dispatch(logout())
-    }
-  }
-}
+// const mapDispatch = (dispatch) => {
+//   return {
+//     handleClick () {
+//       dispatch(logout())
+//     }
+//   }
+// }
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Main))
+// // The `withRouter` wrapper makes sure that updates are not blocked
+// // when the url changes
+// export default withRouter(connect(mapState, mapDispatch)(Main))
 
 /**
  * PROP TYPES

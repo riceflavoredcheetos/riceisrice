@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter, Link} from 'react-router-dom'
 
 export default class TopNavBar extends React.Component{
     constructor(){
@@ -19,7 +20,7 @@ export default class TopNavBar extends React.Component{
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">Home</a>
+          <Link className="navbar-brand" to = '/product'>Home</Link>
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -46,6 +47,7 @@ export default class TopNavBar extends React.Component{
             <button type="submit" className="btn btn-default">Search</button>
           </form>
           <ul className="nav navbar-nav navbar-right">
+            <li><Link to = '/cart'>Cart</Link></li>
             <li><a href="#">Login</a></li>
           </ul>
         </div>
