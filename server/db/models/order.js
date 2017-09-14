@@ -1,7 +1,8 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require("sequelize");
+const Product = require("./product");
+const db = require("../db");
 
-const Order = db.define('order', {
+const Order = db.define("order", {
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -16,6 +17,14 @@ const Order = db.define('order', {
       min: 0
     }
   }
-})
+});
+
+Order.afterBulkCreate(instances => {
+  const orders = instances.map(instance => {
+    return { id: instance.productId, quantitySold: instance.quantity };
+  });
+
+  Product.prototype.inventorySold(orders);
+});
 
 module.exports = Order;
