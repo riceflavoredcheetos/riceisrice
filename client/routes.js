@@ -4,7 +4,14 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome} from './components'
+import { Login, Signup, UserHome} from './components'
+import Main from './components/main'
+import TopNavBar from './components/TopNavBar'
+import SingleProduct from './components/SingleProductPage'
+import Cart from './components/CartPage'
+import Checkout from './components/CheckoutPage'
+
+
 import {me} from './store'
 import loginPage from './components/loginPage'
 
@@ -19,10 +26,14 @@ class Routes extends Component {
 
   render () {
     const {isLoggedIn} = this.props
+    const fixed = {
+      'position':'fixed'
+    }
 
     return (
       <Router history={history}>
-        <Main>
+        <div>
+          <TopNavBar style= {fixed} />
           <Switch>
             {/* Routes placed here are available to all visitors */}
             <Route path='/login' component={loginPage} />
@@ -36,8 +47,12 @@ class Routes extends Component {
             }
             {/* Displays our Login component as a fallback */}
             <Route component={Login} />
+            <Route exact path = '/product' component = {Main} />
+            <Route path = '/product/:productId' component = {SingleProduct} />
+            <Route exact path = '/cart' component = {Cart} />
+            <Route path = '/cart/checkout' component = {Checkout} />
           </Switch>
-        </Main>
+        </div>
       </Router>
     )
   }

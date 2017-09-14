@@ -1,8 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
-import loginPage from './loginPage'
-
-
+import {withRouter, Link} from 'react-router-dom'
 
 export default class TopNavBar extends React.Component{
     constructor(){
@@ -33,7 +30,7 @@ export default class TopNavBar extends React.Component{
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">Home</a>
+          <Link className="navbar-brand" to = '/product'>Home</Link>
         </div>
 
         <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -63,7 +60,9 @@ export default class TopNavBar extends React.Component{
           </form>
 
           <ul className="nav navbar-nav navbar-right">
-            <Link to="/login">Login</Link>
+
+            <li><Link to = '/cart'>Cart</Link></li>
+            <li><a href="#">Login</a></li>
           </ul>
 
         </div>
