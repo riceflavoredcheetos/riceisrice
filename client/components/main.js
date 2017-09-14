@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 import Product from './allProducts'
-import TopNavBar from './TopNavBar'
+import TopNavBar from './topNavBar'
 
 /**
  * COMPONENT
