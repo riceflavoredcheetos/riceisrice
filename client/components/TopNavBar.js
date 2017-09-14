@@ -54,8 +54,11 @@ export default class TopNavBar extends React.Component{
 
           <ul className="nav navbar-nav navbar-right">
 
+
+
             <li><Link to = '/cart'>Cart</Link></li>
             <li><Link to = '/'>Login</Link></li>
+
           </ul>
 
         </div>
