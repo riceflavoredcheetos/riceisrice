@@ -16,7 +16,7 @@ class Product extends React.Component {
     let rand = Math.floor(Math.random()*(rice.length))
     console.log("Rand", rand, rice)
     let Rice = rice[rand]
-    return (
+    return(
       <div>
         <div className="list-group">
               <Link
@@ -28,11 +28,12 @@ class Product extends React.Component {
               </Link>
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapState = state => {
+
   return {
     AllProducts: state.AllProducts
   };
