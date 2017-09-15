@@ -3,8 +3,6 @@ import { login } from "../store/currentUser";
 import { connect } from 'react-redux';
 import store from '../store';
 
-
-
 export class LoginPage extends React.Component {
     constructor(props) {
         super(props);
@@ -12,11 +10,11 @@ export class LoginPage extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <form onSubmit={this.onLoginSubmit}>
                     <label>
-                        <input name="email" type="email" /> Email 
+                        <input name="email" type="email" /> Email
                         <input name="password" type="password"/> Password
                     </label>
                         <input type="submit" />
@@ -26,7 +24,7 @@ export class LoginPage extends React.Component {
     }
 
     //grab login creditials from login form
-    onLoginSubmit(event) {  
+    onLoginSubmit(event) {
         event.preventDefault();
         const { email, password } = event.target;
         const user = {
@@ -35,13 +33,13 @@ export class LoginPage extends React.Component {
         }
 
         //grab user login creditials, dispatch thunk login function with creditials
-        //to make axios request which fetches user object.  
-        this.props.reactLogin(user)      
+        //to make axios request which fetches user object.
+        this.props.reactLogin(user)
     }
 
 }
 
-const mapDispatch = dispatch => { 
+const mapDispatch = dispatch => {
     return {
         reactLogin: user => dispatch(login(user))
     }

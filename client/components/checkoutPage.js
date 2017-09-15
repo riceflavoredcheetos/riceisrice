@@ -4,12 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 
-
 const Checkout = () => {
-
-
-
-
 
       return (
         <div>
