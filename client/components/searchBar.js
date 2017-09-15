@@ -13,6 +13,7 @@ class SearchBar extends Component {
 
   onInputChange(event) {
     this.setState({ keyword: event.target.value });
+    console.log(event.target.value);
   }
 
   onFormSubmit(event) {
