@@ -4,18 +4,19 @@ import { Router } from "react-router";
 import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import history from "./history";
+import Products from './components/shop'
+
 import {
   Login,
   Signup,
   UserHome,
   Main,
   TopNavBar,
-  SearchBar,
   LoginPage,
   SingleProduct,
   Cart,
   Checkout,
-  About
+  About,
 } from "./components";
 
 import { me } from "./store";
@@ -38,7 +39,7 @@ class Routes extends Component {
       <Router history={history}>
         <div>
           <TopNavBar style={fixed} />
-          <SearchBar />
+          {/*<SearchBar />*/}
           <Switch>
             {/* Routes placed here are available to all visitors */}
 
@@ -54,12 +55,13 @@ class Routes extends Component {
             )}
 
             {/* Displays our Login component as a fallback */}
-            <Route exact path="/" component={Login} />
-            <Route exact path="/product" component={Main} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Main} />
             <Route path="/product/:productId" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
             <Route path="/cart/checkout" component={Checkout} />
             <Route path="/about" component={About} />
+            <Route exact path="/product" component = {Products} />
           </Switch>
         </div>
       </Router>

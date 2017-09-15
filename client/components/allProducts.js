@@ -1,34 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
-import { logout } from "../store";
 import { getAllProducts } from "../store/allProducts";
 
 class Product extends React.Component {
   componentDidMount() {
-    this.props.getProducts();
+    console.log("ResData")
+    this.props.getProduct();
   }
+
 
   render() {
     const rice = this.props.AllProducts;
-    console.log(this.props);
-    console.log("Rice:", rice);
+    console.log("props", this.props)
+    let rand = Math.floor(Math.random()*(rice.length))
+    console.log("Rand", rand, rice)
+    let Rice = rice[rand]
     return (
       <div>
-        <h1>ALL PRODUCTS</h1>
         <div className="list-group">
-          {rice.map(item => {
-            return (
               <Link
-                to={`/product/${item.id}`}
+                to={`/product/${Rice.id}`}
                 className="list-group-item"
-                key={item.id} >
-                <h4 className="list-group-item-heading">{item.title}</h4>
-                <p className="list-group-item-text">{item.description}</p>
+                  >
+                <h4 className="list-group-item-heading">{Rice.title}</h4>
+                <p className="list-group-item-text">{Rice.description}</p>
               </Link>
-            );
-          })}
         </div>
       </div>
     );
@@ -43,7 +40,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getProducts: function() {
+    getProduct: function() {
       const action = getAllProducts();
       dispatch(action);
     }
