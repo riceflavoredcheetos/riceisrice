@@ -2,12 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
+import {logout} from '../store'
 
-const About = () => {
+
+const Checkout = () => {
+
+
+
+
 
       return (
         <div>
-            <h1>ABOUT RICE????</h1>
+            <h1>CheckOut Page</h1>
         </div>
       )
 }
@@ -27,4 +33,4 @@ const About = () => {
 
  }
 
- export default withRouter(connect(mapState, mapDispatch)(About))
+ export default withRouter(connect(mapState, mapDispatch)(Checkout))
