@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 
 //CONSTANTS
@@ -20,7 +21,6 @@ export default function (currentUser = {}, action) {
             return action.user;
         
         case SIGNUP_CURRENT_USER:
-
             return action.user;
 
         default:
@@ -56,7 +56,8 @@ export const login = creditials => {
         .then(resToData)
         .then(user => {
             console.log('server user', user)
-            dispatch({type: LOGIN_CURRENT_USER, user});
+            dispatch({ type: LOGIN_CURRENT_USER, user })
+            history.push('/home')
         })
         .catch(logErr)
 

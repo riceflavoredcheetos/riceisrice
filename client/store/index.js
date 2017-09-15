@@ -11,7 +11,6 @@ import SearchBar from './searchBar';
 //ADD REDUCERS HERE
 
 const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, SearchBar})
-
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 
