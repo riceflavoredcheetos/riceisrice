@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 /**
  * ACTION TYPES
  */
@@ -19,6 +18,7 @@ export const getSearchProducts = product => ({ type: GET_SEARCH_PRODUCTS, produc
 export const fetchSearchProducts = () =>
   dispatch =>
   axios.get('/api/products')
+  // Product.prototype.searchProduct(keyword)
     .then(res => {
       console.log(res.data, 'resdata')
       dispatch(getSearchProducts(res.data))})
