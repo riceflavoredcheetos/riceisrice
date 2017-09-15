@@ -3,6 +3,11 @@ const User = require('../db/models/user')
 module.exports = router
 
 
+
+router.use('/me', require('./me'))
+router.use('/google', require('./google'))
+
+
 //original login function... move to auth/me.js
 // router.post('/login', (req, res, next) => {
 //   User.findOne({where: {email: req.body.email}})
@@ -36,5 +41,4 @@ router.post('/logout', (req, res) => {
 })
 
 
-router.use('/me', require('./me'))
-router.use('/google', require('./google'))
+

@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {Router} from 'react-router'
+import {Route, Switch} from 'react-router-dom'
+import PropTypes from 'prop-types'
+import history from './history'
+import { Login as AuthLogin, Signup as AuthSignup, UserHome} from './components'
+import Main from './components/main'
+import TopNavBar from './components/TopNavBar'
+import SingleProduct from './components/SingleProductPage'
+import Cart from './components/CartPage'
+import Checkout from './components/CheckoutPage'
+import About from './components/about'
+import SignUp from './components/signup'
+// import AuthForm from './components/auth-form'
+=======
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Router } from "react-router";
@@ -5,6 +22,7 @@ import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import history from "./history";
 import Products from './components/shop'
+>>>>>>> master
 
 import {
   Login,
@@ -94,6 +112,6 @@ export default connect(mapState, mapDispatch)(Routes);
  * PROP TYPES
  */
 Routes.propTypes = {
-  loadInitialData: PropTypes.func.isRequired,
+  // loadInitialData: PropTypes.func.isRequired,      
   isLoggedIn: PropTypes.bool.isRequired
 };
