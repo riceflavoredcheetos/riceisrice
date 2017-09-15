@@ -4,6 +4,12 @@ import { withRouter, Link } from "react-router-dom";
 import { getAllProducts } from "../store/allProducts";
 
 class Product extends React.Component {
+
+  constructor(props){
+    super(props)
+  }
+
+
   componentDidMount() {
     console.log("ResData")
     this.props.getProduct();
@@ -12,7 +18,7 @@ class Product extends React.Component {
 
   render() {
     const rice = this.props.AllProducts;
-    console.log("props", this.props)
+    console.log("props", this.props.getProduct)
     let rand = Math.floor(Math.random()*(rice.length))
     console.log("Rand", rand, rice)
     let Rice = rice[rand]
@@ -42,6 +48,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getProduct: function() {
+      console.log("GETTing Product")
       const action = getAllProducts();
       dispatch(action);
     }
