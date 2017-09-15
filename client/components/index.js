@@ -12,5 +12,6 @@ export { default as SingleProduct } from "./singleProductPage";
 export { default as Cart } from "./cartPage";
 export { default as Checkout } from "./checkoutPage";
 export { default as About } from "./about";
+export { default as Products } from "./shop";
 
 export { Login, Signup } from "./auth-form";
