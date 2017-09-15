@@ -41,7 +41,7 @@ import {getAllProducts} from '../store/allProducts'
 
 const mapState = (state) => {
     return {
-      AllProducts:state.AllProducts
+      AllProducts: state.AllProducts
     }
   }
 
