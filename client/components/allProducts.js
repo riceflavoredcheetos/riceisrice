@@ -22,6 +22,11 @@ class Product extends React.Component {
     let rand = Math.floor(Math.random()*(rice.length))
     console.log("Rand", rand, rice)
     let Rice = rice[rand]
+    if(rice.length<1){
+      return (
+      <div></div>
+      )
+    } else {
     return(
       <div>
         <div className="list-group">
@@ -35,7 +40,7 @@ class Product extends React.Component {
         </div>
       </div>
     )
-  }
+  }}
 }
 
 const mapState = state => {
@@ -52,7 +57,7 @@ const mapDispatch = dispatch => {
       const action = getAllProducts();
       dispatch(action);
     }
-  };``
+  };
 } ;
 
 export default withRouter(connect(mapState, mapDispatch)(Product));
