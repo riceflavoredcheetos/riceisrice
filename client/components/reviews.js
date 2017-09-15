@@ -6,16 +6,12 @@ import {logout} from '../store'
 
 export default class Review extends React.Component {
 
-
-
-  render(){
-
-  return (
-    <div>
-        Review Component
-    </div>
-
-  )
+  render() {
+    return (
+      <div>
+          Review Component
+      </div>
+    )
 }
 }
 

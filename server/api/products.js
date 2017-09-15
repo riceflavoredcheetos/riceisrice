@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product, categoryType } = require("../db/models");
+const { Product, productType, Category } = require("../db/models");
 
 //get all products
 router.get("/", (req, res, next) => {
@@ -14,7 +14,10 @@ router.get("/", (req, res, next) => {
 router.get("/:productId", (req, res, next) => {
   let productId = req.params.productId;
 
-  Product.findById(productId)
+  Product.findOne({
+      where: {
+          id:productId,
+       }, include:[Category]})
     .then(singleProduct => res.json(singleProduct))
     .catch(next);
 });
@@ -23,15 +26,15 @@ router.get("/:productId", (req, res, next) => {
 router.post("/", async (req, res, next) => {
     try {
         const newProduct = await Product.create(req.body)
-        await categoryType.create({
+        await productType.create({
             productId: req.body.id,
             categoryId: req.body.categoryId
         })
         res.json(newProduct)
     } catch (err) {
         next(err)
-    }   
-}); 
+    }
+});
 
 
 //admin feature : update product

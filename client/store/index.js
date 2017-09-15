@@ -6,12 +6,14 @@ import AllProducts from './allProducts'
 import SingleProduct from './singleProduct'
 import CurrentUser from './currentUser'
 
+import SearchBar from './searchBar';
+
 //ADD REDUCERS HERE
 
-const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct})
+const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, SearchBar})
+
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 
 export default store
 export * from './user'
- 

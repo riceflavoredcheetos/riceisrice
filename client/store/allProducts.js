@@ -7,10 +7,10 @@ import axios from 'axios'
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 
 /**
- * ACTION CREATORSget
+ * ACTION CREATORS
  */
 
- export const getProducts = product => ({type:GET_PRODUCTS, product})
+ export const getProducts = product => ({type: GET_PRODUCTS, product})
 
  /**
  * THUNK CREATORS
@@ -20,7 +20,6 @@ export const GET_PRODUCTS = 'GET_PRODUCTS'
     dispatch =>
       axios.get('/api/products')
         .then( res =>{
-          console.log(res.data, "resdata")
           dispatch(getProducts(res.data))})
         .catch(err => console.log(err))
 

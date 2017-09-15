@@ -11,22 +11,20 @@ const SIGNUP_CURRENT_USER = "SIGNUP_CURRENT_USER"
 const loginCurrentUser = user => { type: LOGIN_CURRENT_USER, user };
 const signupUser = user => {type: SIGNUP_CURRENT_USER, user};
 
-
-
 //REDUCER
 
 export default function (currentUser = {}, action) {
     switch (action.type) {
-        case "LOGIN_CURRENT_USER": 
-            return action.user;
-        
-        case "SIGNUP_CURRENT_USER":
-            return action.user;
-        
-        default: 
-            return currentUser;
 
+        case LOGIN_CURRENT_USER: 
+            return action.user;
         
+        case SIGNUP_CURRENT_USER:
+
+            return action.user;
+
+        default:
+            return currentUser;
     }
 }
 
@@ -52,8 +50,8 @@ export const signup = creditials => {
  }
 
 export const login = creditials => {
-   return dispatch => 
-    //network request 
+   return dispatch =>
+    //network request
         axios.put('/auth/me', creditials) //creditials are sent as req.body
         .then(resToData)
         .then(user => {
@@ -61,5 +59,5 @@ export const login = creditials => {
             dispatch({type: LOGIN_CURRENT_USER, user});
         })
         .catch(logErr)
-     
+
 }

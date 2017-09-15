@@ -4,18 +4,11 @@ import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
 
-
-
-const Cart = () => {
-
-
-
-
+const Checkout = () => {
 
       return (
         <div>
-            <h1>Cart Page</h1>
-            <Link to= {'/cart/checkout'}><h1>Checkout</h1></Link>
+            <h1>CheckOut Page</h1>
         </div>
       )
 }
@@ -35,4 +28,4 @@ const Cart = () => {
 
  }
 
- export default withRouter(connect(mapState, mapDispatch)(Cart))
+ export default withRouter(connect(mapState, mapDispatch)(Checkout))

@@ -1,58 +1,51 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
-import {getAllProducts} from '../store/allProducts'
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+import { getAllProducts } from "../store/allProducts";
 
-
- class Product extends React.Component{
-
-
-  componentDidMount(){
-    this.props.getProducts();
+class Product extends React.Component {
+  componentDidMount() {
+    console.log("ResData")
+    this.props.getProduct();
   }
 
 
-  render(){
-    const rice = this.props.AllProducts
-    console.log(this.props)
-    console.log("Rice:", rice)
-    return (
-
+  render() {
+    const rice = this.props.AllProducts;
+    console.log("props", this.props)
+    let rand = Math.floor(Math.random()*(rice.length))
+    console.log("Rand", rand, rice)
+    let Rice = rice[rand]
+    return(
       <div>
-      <h1>ALL PRODUCTS</h1>
-      <div className = "list-group">
-      {
-        rice.map( item => {
-
-        return(
-            <Link to ={`/product/${item.id}`} className="list-group-item" key = {item.id}>
-            <h4 className="list-group-item-heading">{item.title}</h4>
-            <p className="list-group-item-text">{item.description}</p>
-            </Link>
-        )})
-      }
-      </div>
+        <div className="list-group">
+              <Link
+                to={`/product/${Rice.id}`}
+                className="list-group-item"
+                  >
+                <h4 className="list-group-item-heading">{Rice.title}</h4>
+                <p className="list-group-item-text">{Rice.description}</p>
+              </Link>
+        </div>
       </div>
     )
   }
 }
 
-const mapState = (state) => {
-    return {
-      AllProducts:state.AllProducts
+const mapState = state => {
+
+  return {
+    AllProducts: state.AllProducts
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    getProduct: function() {
+      const action = getAllProducts();
+      dispatch(action);
     }
-  }
+  };``
+} ;
 
-const mapDispatch = (dispatch) =>{
-    return {
-      getProducts: function(){
-        const action = getAllProducts();
-        dispatch(action)
-      }
-    }
-
-  }
-
-export default withRouter(connect(mapState, mapDispatch)(Product))
+export default withRouter(connect(mapState, mapDispatch)(Product));

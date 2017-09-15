@@ -2,17 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {getSingleProduct} from '../store/singleProduct'
-import Review from './Reviews'
+import Review from './reviews'
 
 
 class SingleProduct extends React.Component{
-
 
   componentDidMount(){
     const productId = this.props.match.params.productId
     this.props.loadProduct(productId)
   }
-
 
   render(){
     const product = this.props.singleProduct
@@ -32,21 +30,20 @@ class SingleProduct extends React.Component{
  }
 }
 
-
 /**
  * CONTAINER
  */
 
 const mapState = (state) => {
   return {
-    singleProduct:state.SingleProduct
+    singleProduct: state.SingleProduct
   }
 }
 
-const mapDispatch = (dispatch) =>{
-    return{
-      loadProduct:function(productId){
-      dispatch(getSingleProduct(productId))
+const mapDispatch = (dispatch) => {
+    return {
+      loadProduct: (productId) => {
+        dispatch(getSingleProduct(productId))
       }
     }
 }
