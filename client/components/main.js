@@ -54,7 +54,7 @@ const Main = props => {
       </div>
 
       <div className="row content" id="feature">
-        <h3 style={Center}>FEATURED PRODUCTS</h3>
+        <h3 style={Center}>PRODUCT OF THE WEEK</h3>
       </div>
       <hr style={{ height: "20px" }} />
       <Product />

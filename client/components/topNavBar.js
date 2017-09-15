@@ -33,7 +33,7 @@ export default class TopNavBar extends React.Component {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <Link className="navbar-brand" to="/product">
+            <Link className="navbar-brand" to="/">
               Home
             </Link>
           </div>
@@ -47,37 +47,7 @@ export default class TopNavBar extends React.Component {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <a href="#">Shop</a>
-              </li>
-              <li className="dropdown">
-                <a
-                  href="#"
-                  className="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-expanded="false"
-                >
-                  Categories <span className="caret" />
-                </a>
-                <ul className="dropdown-menu" role="menu">
-                  <li>
-                    <a href="#">Type1</a>
-                  </li>
-                  <li>
-                    <a href="#">Type2</a>
-                  </li>
-                  <li>
-                    <a href="#">Type3</a>
-                  </li>
-                  <li className="divider" />
-                  <li>
-                    <a href="#">Type4</a>
-                  </li>
-                  <li className="divider" />
-                  <li>
-                    <a href="#">Type5</a>
-                  </li>
-                </ul>
+                <Link to= "/product">Shop</Link>
               </li>
             </ul>
 
@@ -86,7 +56,7 @@ export default class TopNavBar extends React.Component {
                 <Link to="/cart">Cart</Link>
               </li>
               <li>
-                <Link to="/">Login</Link>
+                <Link to="/login">Login</Link>
               </li>
             </ul>
           </div>

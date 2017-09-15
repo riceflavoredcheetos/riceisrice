@@ -20,7 +20,6 @@ export const GET_PRODUCTS = 'GET_PRODUCTS'
     dispatch =>
       axios.get('/api/products')
         .then( res =>{
-          console.log(res.data, "resdata")
           dispatch(getProducts(res.data))})
         .catch(err => console.log(err))
 
