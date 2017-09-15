@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {getSingleProduct} from '../store/singleProduct'
-import Review from './Reviews'
+import Review from './reviews'
 
 
 class SingleProduct extends React.Component{
