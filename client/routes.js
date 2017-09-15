@@ -4,13 +4,15 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import { Login, Signup, UserHome} from './components'
+import { Login as AuthLogin, Signup as AuthSignup, UserHome} from './components'
 import Main from './components/main'
 import TopNavBar from './components/TopNavBar'
 import SingleProduct from './components/SingleProductPage'
 import Cart from './components/CartPage'
 import Checkout from './components/CheckoutPage'
 import About from './components/about'
+import SignUp from './components/signup'
+// import AuthForm from './components/auth-form'
 
 import {me} from './store'
 import LoginPage from './components/loginPage'
@@ -21,7 +23,7 @@ import LoginPage from './components/loginPage'
  */
 class Routes extends Component {
   componentDidMount () {
-    this.props.loadInitialData()
+    // this.props.loadInitialData() 
   }
 
   render () {
@@ -38,7 +40,7 @@ class Routes extends Component {
             {/* Routes placed here are available to all visitors */}
             <Route path='/login' component={LoginPage} />
             {/* {console.log('clicked')} */}
-            <Route path='/signup' component={Signup} />
+            <Route path='/signup' component={SignUp} />
               {
                 isLoggedIn &&
                   <Switch>
@@ -48,7 +50,7 @@ class Routes extends Component {
               }
             {/* Displays our Login component as a fallback */}
 
-            <Route exact path = '/' component={Login} />
+            {/* <Route exact path = '/' component={AuthLogin} /> */}
             <Route exact path = '/product' component = {Main} />
             <Route path = '/product/:productId' component = {SingleProduct} />
             <Route exact path = '/cart' component = {Cart} />
@@ -72,6 +74,7 @@ const mapState = (state) => {
   }
 }
 
+//commented out related to currentuser action
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
@@ -80,12 +83,12 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Routes)
+export default connect(mapState, null)(Routes)
 
 /**
  * PROP TYPES
  */
 Routes.propTypes = {
-  loadInitialData: PropTypes.func.isRequired,
+  // loadInitialData: PropTypes.func.isRequired,      
   isLoggedIn: PropTypes.bool.isRequired
 }

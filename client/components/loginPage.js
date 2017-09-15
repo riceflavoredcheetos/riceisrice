@@ -2,6 +2,8 @@ import React from 'react';
 import { login } from "../store/currentUser";
 import { connect } from 'react-redux';
 import store from '../store';
+import SignUp from './signup';
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,13 +16,20 @@ export class LoginPage extends React.Component {
     render() {
         return(
             <div>
+                <h1>Hello. Sign in</h1>
                 <form onSubmit={this.onLoginSubmit}>
                     <label>
                         <input name="email" type="email" /> Email 
                         <input name="password" type="password"/> Password
                     </label>
-                        <input type="submit" />
+                        <button type="submit" name="Login"/>Login
                 </form>
+            
+                        <Link to='/signup'>Signup</Link>
+               
+
+
+
             </div>
         )
     }
@@ -34,6 +43,7 @@ export class LoginPage extends React.Component {
             password: password.value
         }
 
+        console.log('user', user)
         //grab user login creditials, dispatch thunk login function with creditials
         //to make axios request which fetches user object.  
         this.props.reactLogin(user)      
@@ -43,7 +53,7 @@ export class LoginPage extends React.Component {
 
 const mapDispatch = dispatch => { 
     return {
-        reactLogin: user => dispatch(login(user))
+        reactLogin: user => dispatch(login(user)),
     }
 }
 

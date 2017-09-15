@@ -4,11 +4,11 @@ import thunkMiddleware from 'redux-thunk'
 import user from './user'
 import AllProducts from './allProducts'
 import SingleProduct from './singleProduct'
-import currentUser from './currentUser'
+import CurrentUser from './currentUser'
 
 //ADD REDUCERS HERE
 
-const reducer = combineReducers({user, AllProducts, currentUser, SingleProduct})
+const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 

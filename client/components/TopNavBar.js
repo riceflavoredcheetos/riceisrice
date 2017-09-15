@@ -7,15 +7,6 @@ export default class TopNavBar extends React.Component{
       this.state = {}
     }
 
-    handleClick() {
-      let trigger = true;
-      console.log('clicked');
-      if (trigger) {
-        return (<loginPage />)
-      }
-
-      !trigger
-    }
 
   render() {
 
@@ -57,7 +48,7 @@ export default class TopNavBar extends React.Component{
 
 
             <li><Link to = '/cart'>Cart</Link></li>
-            <li><Link to = '/'>Login</Link></li>
+            <li><Link to = '/login'>Login</Link></li>
 
           </ul>
 
