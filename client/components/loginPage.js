@@ -41,7 +41,7 @@ export class LoginPage extends React.Component {
             password: password.value
         }
 
-        console.log('user', user)
+        // console.log('login user', user)
         //grab user login creditials, dispatch thunk login function with creditials
         //to make axios request which fetches user object.
         this.props.reactLogin(user)
