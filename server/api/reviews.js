@@ -4,6 +4,7 @@ const {Review} = require('../db/models');
 //get all product reviews
 router.get('/:productId', (req, res, next) => {
     let productId = req.params.productId;
+    console.log('im here')
     Review.findAll({where: {productId}})
         .then(reviews => res.json(reviews))
         .catch(next);

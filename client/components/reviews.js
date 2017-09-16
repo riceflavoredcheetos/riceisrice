@@ -7,6 +7,7 @@ import {logout} from '../store'
 export default class Review extends React.Component {
 
   render() {
+    // console.log('THIS props ', this.props.match.params)
     return (
       <div>
           Review Component

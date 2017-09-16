@@ -8,6 +8,7 @@ import Review from './reviews'
 class SingleProduct extends React.Component{
 
   componentDidMount(){
+    console.log('my props ', this.props)
     const productId = this.props.match.params.productId
     this.props.loadProduct(productId)
   }
@@ -23,7 +24,7 @@ class SingleProduct extends React.Component{
     <p>{product.description}</p>
     <p>{product.price}</p>
      <div>
-       <Review />
+       <Review productId={product.id}/>
      </div>
     </div>
   )
