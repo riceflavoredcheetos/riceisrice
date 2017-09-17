@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { logoutAndSendtoFrontPage as logoutUser } from '../store/currentUser';
+import histroy from '../history'
+
 
 export class TopNavBar extends React.Component {
   constructor() {
@@ -12,6 +14,7 @@ export class TopNavBar extends React.Component {
   }
 
   render() {
+
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -49,23 +52,7 @@ export class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
-              {/* { this.props.CurrentUser ? this.renderLoginSignup() : this.renderLogout() } */}
-
-              <li>
-              <Link to="/signup" activeClassName="active">signup</Link>
-             </li>
-             <li>
-               <Link to="/login" activeClassName="active">login</Link>
-             </li>
-
-             <li>
-              <button
-                className="navbar-btn btn"
-                onClick={this.props.logout}>
-                logout {name}
-              </button>
-              </li>
-
+              { (this.props.CurrentUser === null) ? this.renderLoginSignup() : this.renderLogout() }
             </ul>
           </div>
         </div>
@@ -77,10 +64,10 @@ export class TopNavBar extends React.Component {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
-         <Link to="/signup" activeClassName="active">signup</Link>
+         <Link to="/signup" className="navbar-btn btn btn-default">signup</Link>
         </li>
         <li>
-          <Link to="/login" activeClassName="active">login</Link>
+          <Link to="/login" className="navbar-btn btn btn-default">login</Link>
         </li>
       </ul>
     );
@@ -91,11 +78,18 @@ export class TopNavBar extends React.Component {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
+
+        <Link to='/home' className="navbar-btn btn btn-default">
+          Account
+        </Link>
+
         <button
+          id='logoutButton'
           className="navbar-btn btn btn-default"
           onClick={this.props.logout}>
           logout {name}
         </button>
+
         </li>
       </ul>
     );
@@ -114,7 +108,10 @@ const mapState = state => {
 
 //create mapDispatch with logout function 
 const mapDispatch = dispatch => ({
-  logout: () => { dispatch(logoutUser()) }
+  logout: () => { dispatch(logoutUser()) },
+  linkToAccount: () => {
+   return history.push('/accountpage')
+  }
 })
 
 export default connect(mapState, mapDispatch)(TopNavBar)

@@ -50,9 +50,20 @@ export const signup = credentials => {
          .then(user => {
              dispatch({type: SIGNUP_CURRENT_USER, user});
          })
-         .catch(logErr)
-      
+         .catch(logErr)  
  }
+
+ 
+ export const signupAndRedirect = credentials => {
+     return dispatch => {
+          dispatch(signup(credentials))
+              .then(user => {
+                  history.push('/')
+              })
+              .catch(logErr)
+      }
+ }
+
 
 export const login = credentials => {
    return dispatch =>
@@ -72,7 +83,7 @@ export const loginAndSendtoUserHome = creditials => {
             .then(user => {
                 history.push('/home')
             })
-            .catch(logErr);
+            .catch(logErr)
     }
 }
 

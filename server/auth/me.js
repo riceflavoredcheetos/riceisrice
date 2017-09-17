@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../db/models/user');
 
 
+//loads user after refresh
 router.get('/', (req, res, next) => {
     User.findById(req.session.userId)
         .then(res.json.bind(res))
@@ -28,6 +29,8 @@ router.put('/', (req, res, next) => {
     .catch(next);
 })
 
+
+
 //create user 
 router.post('/signup', (req, res, next) => {
     const { email, password } = req.body;
@@ -36,13 +39,15 @@ router.post('/signup', (req, res, next) => {
     .then(user => {
         if (user) {
             req.session.userId = user.id;
-            res.status(200).json(user);
+            res.json(user);
         } else {
             res.sendStatus(404);
         }
     })
     .catch(next);
 })
+
+
 
 //logout 'me'
 router.delete('/', function(req, res, next) {

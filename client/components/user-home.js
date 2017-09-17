@@ -10,6 +10,22 @@ export const UserHome = (props) => {
   return (
     <div>
       <h3>Welcome, {currentUser.email}</h3>
+
+      <div id="userOptions">
+          <div id="yourOrders">
+              <h2>Your Orders</h2>
+          </div>
+
+          <div id="loginAndSecurity">
+              <h2>Login and Security</h2>
+          </div>
+
+          <div id="addresses">
+              <h2>Addresses</h2>
+          </div>
+
+      </div>
+      
     </div>
   )
 }
