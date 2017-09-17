@@ -94,6 +94,6 @@ export default connect(mapState, mapDispatch)(Routes);
  * PROP TYPES
  */
 Routes.propTypes = {
-  // loadInitialData: PropTypes.func.isRequired,      
+  // loadInitialData: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 };

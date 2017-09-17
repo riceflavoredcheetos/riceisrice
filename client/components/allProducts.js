@@ -4,11 +4,10 @@ import { withRouter, Link } from "react-router-dom";
 import { getAllProducts } from "../store/allProducts";
 
 class Product extends React.Component {
-  componentDidMount() {
-    console.log("ResData")
-    this.props.getProduct();
-  }
 
+  componentDidMount() {
+    this.props.getProducts();
+  }
 
   render() {
     const rice = this.props.AllProducts;
@@ -16,7 +15,8 @@ class Product extends React.Component {
     let rand = Math.floor(Math.random()*(rice.length))
     console.log("Rand", rand, rice)
     let Rice = rice[rand]
-    return(
+
+    return (
       <div>
         <div className="list-group">
               <Link
