@@ -4,6 +4,7 @@ import { Router } from "react-router";
 import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import history from "./history";
+import { fetchLoggedInUser } from './store/currentUser';
 
 import {
   Products,
@@ -26,7 +27,7 @@ import { me } from "./store";
  */
 class Routes extends Component {
   componentDidMount() {
-    // this.props.loadInitialData();
+    this.props.loadInitialData();
   }
 
   render() {
@@ -78,14 +79,13 @@ const mapState = state => {
     
     //causing a 
     isLoggedIn: (state.CurrentUser !== null && state.CurrentUser.id !== undefined) ? true : false
-      // state.CurrentUser.id
   };
 };
 
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
-      dispatch(me());
+      dispatch(fetchLoggedInUser());
     }
   };
 };

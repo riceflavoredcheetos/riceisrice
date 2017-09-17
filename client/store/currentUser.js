@@ -89,6 +89,15 @@ export const logoutAndSendtoFrontPage = () => {
         .then(() => {
             history.push('/')
         })
-        .catch(logErr);
+        .catch(logErr)
     }
 }
+
+export const fetchLoggedInUser = () => 
+    dispatch => 
+        axios.get('/auth/me')
+        .then(resToData)
+        .then(user => {
+            dispatch({ type: LOGIN_CURRENT_USER, user })
+        })
+        .catch(logErr)
