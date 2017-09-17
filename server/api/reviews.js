@@ -20,7 +20,6 @@ router.post('/', (req, res, next) => {
 //admin feature : update review
 router.put('/:reviewId', (req, res, next) => {
     let reviewId = req.params.reviewId;
-
     Review.findById(reviewId)
         .then(singleReview => singleReview.update(req.body))
         .then(updatedReview => res.json(updatedReview))
@@ -30,7 +29,6 @@ router.put('/:reviewId', (req, res, next) => {
 //admin feature : delete review
 router.delete('/:reviewId', (req, res, next) => {
     let id = req.params.reviewId;
-
     Review.destroy({where: {id}})
         .then(() => res.sendStatus(204))
         .catch(next)
