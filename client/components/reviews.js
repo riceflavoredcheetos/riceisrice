@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-import {getReviewThunk, removeThunk} from '../store/reviews';
+import {getReviewThunk, updateThunk, removeThunk} from '../store/reviews';
 
 const display = {
     display: "inline"
@@ -14,9 +14,12 @@ class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: null
+      editing: null,
+      newReview: ''
     }
     this.changeState = this.changeState.bind(this);
+    this.changeReview = this.changeReview.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   componentDidMount() {
@@ -28,10 +31,20 @@ class Review extends React.Component {
     const editing = this.props.editing;
     this.setState({editing: id});
   }
+
+  changeReview = (review) => {
+    this.setState({newReview: review})
+  }
+
+  handleSubmit = (id, review) => {
+    this.props.updateReview(id, review);
+    this.setState({editing: null, newReview: ''});
+  }
   
   render() {    
     const reviews = this.props.reviews;
     const editing = this.state.editing;
+    const newReview = this.state.newReview;
     return (
       <div>
         <h3>This is what others are saying about this product: </h3>
@@ -40,8 +53,9 @@ class Review extends React.Component {
               {
                 editing === review.id 
                 ? 
-                  <form >
-                  <input type='text' className="form-control" defaultValue={review.content} onChange={event => console.log('here ', event.target.value)}/>
+                  <form>
+                  <input type="text" name="newReview" className="form-control" defaultValue={review.content} onChange={event => this.changeReview(event.target.value)}/>
+                  <button type="button" className="btn btn-success" onClick={() => this.handleSubmit(review.id, newReview)}>Submit</button>
                   </form>
                 : 
                   <div>
@@ -63,6 +77,7 @@ class Review extends React.Component {
  */
 
 const mapState = (state) => {
+  console.log('here is my state ', state)
  return {
    reviews: state.Reviews,
  }
@@ -72,6 +87,9 @@ const mapDispatch = (dispatch, ownProps) => {
     return {
       getReviews: (productId) => {
         dispatch(getReviewThunk(productId))
+      },
+      updateReview: (id, review) => {
+        dispatch(updateThunk(id, {content: review}))
       },
       deleteReview: (reviewId) => {
         dispatch(removeThunk(reviewId))
