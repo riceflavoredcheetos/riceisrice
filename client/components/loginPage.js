@@ -1,5 +1,5 @@
 import React from 'react';
-import { login } from "../store/currentUser";
+import { loginAndSendtoUserHome as login } from "../store/currentUser";
 import { connect } from 'react-redux';
 import store from '../store';
 import SignUp from './signup';
@@ -41,17 +41,13 @@ export class LoginPage extends React.Component {
             password: password.value
         }
 
-        // console.log('login user', user)
-        //grab user login creditials, dispatch thunk login function with creditials
-        //to make axios request which fetches user object.
         this.props.reactLogin(user)
     }
-
 }
 
 const mapDispatch = dispatch => {
     return {
-        reactLogin: user => dispatch(login(user)),
+        reactLogin: credentials => dispatch(login(credentials)),
     }
 }
 
