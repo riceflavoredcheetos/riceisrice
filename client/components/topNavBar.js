@@ -60,7 +60,7 @@ export class TopNavBar extends React.Component {
     );
   }
 
-  renderLoginSignup() {
+  renderLoginSignup () {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
@@ -106,7 +106,7 @@ const mapState = state => {
   }
 }
 
-//create mapDispatch with logout function 
+//create mapDispatch with logout function
 const mapDispatch = dispatch => ({
   logout: () => { dispatch(logoutUser()) },
   linkToAccount: () => {

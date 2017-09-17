@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 
 
-//find user 
+//find user
 router.put('/', (req, res, next) => {
     const { email, password } = req.body;
 
@@ -21,7 +21,9 @@ router.put('/', (req, res, next) => {
     .then(user => {
         if (user) {
             req.session.userId = user.id;
+            req.session.cart = []
             res.status(200).json(user);
+
         } else {
             res.send('Invalid login, please try again.').status(401);
         }
@@ -29,12 +31,26 @@ router.put('/', (req, res, next) => {
     .catch(next);
 })
 
+router.post('/cart', (req, res, next) => {
+    console.log("Req.session info:", req.session)
+    let newCart = req.session.cart
+            if(newCart.length>1){
+                newCart.push(req.body)
+                req.session.cart = newCart
+                console.log("pushed", req.session)
+            }
+            else {
+                newCart = [req.body]
+                req.session.cart = newCart
+                console.log("added", req.session)
+            }
+
+})
 
 
-//create user 
+//create user
 router.post('/signup', (req, res, next) => {
     const { email, password } = req.body;
-
     User.create({ email, password })
     .then(user => {
         if (user) {
