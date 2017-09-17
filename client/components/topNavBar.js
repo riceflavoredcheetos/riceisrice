@@ -1,20 +1,14 @@
-import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { logoutAndSendtoFrontPage as logoutUser } from '../store/currentUser';
 
-export default class TopNavBar extends React.Component {
+export class TopNavBar extends React.Component {
   constructor() {
     super();
     this.state = {};
-  }
-
-  handleClick() {
-    let trigger = true;
-    console.log("clicked");
-    if (trigger) {
-      return <loginPage />;
-    }
-
-    !trigger;
+    this.renderLoginSignup = this.renderLoginSignup.bind(this);
+    this.renderLogout = this.renderLogout.bind(this);
   }
 
   render() {
@@ -55,13 +49,72 @@ export default class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
+              {/* { this.props.CurrentUser ? this.renderLoginSignup() : this.renderLogout() } */}
+
               <li>
-                <Link to="/login">Login</Link>
+              <Link to="/signup" activeClassName="active">signup</Link>
+             </li>
+             <li>
+               <Link to="/login" activeClassName="active">login</Link>
+             </li>
+
+             <li>
+              <button
+                className="navbar-btn btn"
+                onClick={this.props.logout}>
+                logout {name}
+              </button>
               </li>
+
             </ul>
           </div>
         </div>
       </nav>
     );
   }
+
+  renderLoginSignup() {
+    return (
+      <ul className="nav navbar-nav navbar-right">
+        <li>
+         <Link to="/signup" activeClassName="active">signup</Link>
+        </li>
+        <li>
+          <Link to="/login" activeClassName="active">login</Link>
+        </li>
+      </ul>
+    );
+  }
+
+  renderLogout() {
+    const name = this.props.CurrentUser.name || this.props.CurrentUser.email;
+    return (
+      <ul className="nav navbar-nav navbar-right">
+        <li>
+        <button
+          className="navbar-btn btn btn-default"
+          onClick={this.props.logout}>
+          logout {name}
+        </button>
+        </li>
+      </ul>
+    );
+  }
+
 }
+
+
+/* ------------------   CONTAINER    ------------------ */
+
+const mapState = state => {
+  return {
+    CurrentUser: state.CurrentUser
+  }
+}
+
+//create mapDispatch with logout function 
+const mapDispatch = dispatch => ({
+  logout: () => { dispatch(logoutUser()) }
+})
+
+export default connect(mapState, mapDispatch)(TopNavBar)
