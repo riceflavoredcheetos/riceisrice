@@ -7,9 +7,9 @@ export class AccountPage extends React.Component {
         super(props)
     }
 
-    
+
     render() {
-        
+
         return(
             <div>
                 <h2></h2>
@@ -31,9 +31,6 @@ export class AccountPage extends React.Component {
 
         )
     }
-
-    
-    
 }
 
 const mapState = state => {

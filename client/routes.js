@@ -4,7 +4,7 @@ import { Router } from "react-router";
 import { Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import history from "./history";
-import { fetchLoggedInUser } from './store/currentUser';
+import { fetchLoggedInUser } from "./store/currentUser";
 
 import {
   Products,
@@ -12,7 +12,6 @@ import {
   UserHome,
   Main,
   TopNavBar,
-  Login,
   LoginPage,
   SingleProduct,
   Cart,
@@ -36,7 +35,7 @@ class Routes extends Component {
     const fixed = {
       position: "fixed"
     };
-    console.log('routes isLoggedIn', this.props.isLoggedIn)
+    console.log("routes isLoggedIn", this.props.isLoggedIn);
     return (
       <Router history={history}>
         <div>
@@ -48,7 +47,7 @@ class Routes extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={Signup} />
-            <Route exact path="/product" component = {Products} />
+            <Route exact path="/product" component={Products} />
             <Route path="/product/:productId" component={SingleProduct} />
             <Route exact path="/cart" component={Cart} />
             <Route path="/cart/checkout" component={Checkout} />
@@ -62,7 +61,7 @@ class Routes extends Component {
                 <Route exact path="/" component={Main} />
                 <Route path="/loginpage" component={LoginPage} />
                 <Route path="/signup" component={Signup} />
-                <Route exact path="/product" component = {Products} />
+                <Route exact path="/product" component={Products} />
                 <Route path="/product/:productId" component={SingleProduct} />
                 <Route exact path="/cart" component={Cart} />
                 <Route path="/cart/checkout" component={Checkout} />
@@ -87,7 +86,10 @@ const mapState = state => {
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
 
     //causing a
-    isLoggedIn: (state.CurrentUser !== null && state.CurrentUser.id !== undefined) ? true : false
+    isLoggedIn:
+      state.CurrentUser !== null && state.CurrentUser.id !== undefined
+        ? true
+        : false
   };
 };
 
