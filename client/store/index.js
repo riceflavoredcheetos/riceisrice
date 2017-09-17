@@ -9,11 +9,7 @@ import Reviews from './reviews'
 
 //ADD REDUCERS HERE
 
-<<<<<<< HEAD
-const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, SearchBar, Reviews})
-=======
-const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct})
->>>>>>> master
+const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, Reviews})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 
