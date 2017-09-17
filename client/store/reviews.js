@@ -26,7 +26,6 @@ dispatch =>
     .catch(err => console.log(err))
 
  export const removeThunk = (reviewId) => dispatch => {
-  console.log('this is review id ', reviewId)
   dispatch(removeReview(reviewId))
   axios.delete(`/api/reviews/${reviewId}`)
     .catch(err => console.log(err))
