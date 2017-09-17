@@ -1,20 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { logoutAndSendtoFrontPage as logoutUser } from '../store/currentUser';
-import histroy from '../history'
-
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
+import { logoutAndSendtoFrontPage as logoutUser } from "../store/currentUser";
+import histroy from "../history";
 
 export class TopNavBar extends React.Component {
   constructor() {
     super();
-    this.state = {};
     this.renderLoginSignup = this.renderLoginSignup.bind(this);
     this.renderLogout = this.renderLogout.bind(this);
+
   }
 
   render() {
-
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -44,7 +42,7 @@ export class TopNavBar extends React.Component {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to= "/product">Shop</Link>
+                <Link to="/product">Shop</Link>
               </li>
             </ul>
 
@@ -52,7 +50,11 @@ export class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
-              { (this.props.CurrentUser === null) ? this.renderLoginSignup() : this.renderLogout() }
+              {this.props.CurrentUser === null ? (
+                this.renderLoginSignup()
+              ) : (
+                this.renderLogout()
+              )}
             </ul>
           </div>
         </div>
@@ -64,10 +66,14 @@ export class TopNavBar extends React.Component {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
-         <Link to="/signup" className="navbar-btn btn btn-default">signup</Link>
+          <Link to="/signup" className="navbar-btn btn btn-default">
+            signup
+          </Link>
         </li>
         <li>
-          <Link to="/login" className="navbar-btn btn btn-default">login</Link>
+          <Link to="/login" className="navbar-btn btn btn-default">
+            login
+          </Link>
         </li>
       </ul>
     );
@@ -78,40 +84,39 @@ export class TopNavBar extends React.Component {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
+          <Link to="/home" className="navbar-btn btn btn-default">
+            Account
+          </Link>
 
-        <Link to='/home' className="navbar-btn btn btn-default">
-          Account
-        </Link>
-
-        <button
-          id='logoutButton'
-          className="navbar-btn btn btn-default"
-          onClick={this.props.logout}>
-          logout {name}
-        </button>
-
+          <button
+            id="logoutButton"
+            className="navbar-btn btn btn-default"
+            onClick={this.props.logout}
+          >
+            logout {name}
+          </button>
         </li>
       </ul>
     );
   }
-
 }
-
 
 /* ------------------   CONTAINER    ------------------ */
 
 const mapState = state => {
   return {
     CurrentUser: state.CurrentUser
-  }
-}
+  };
+};
 
-//create mapDispatch with logout function 
+//create mapDispatch with logout function
 const mapDispatch = dispatch => ({
-  logout: () => { dispatch(logoutUser()) },
+  logout: () => {
+    dispatch(logoutUser());
+  },
   linkToAccount: () => {
-   return history.push('/accountpage')
+    return history.push("/accountpage");
   }
-})
+});
 
-export default connect(mapState, mapDispatch)(TopNavBar)
+export default connect(mapState, mapDispatch)(TopNavBar);

@@ -14,18 +14,18 @@ class SingleProduct extends React.Component{
 
   render(){
     const product = this.props.singleProduct
-  return (
-    <div>
-    <div>
-        <h1>{product.title}</h1>
-    </div>
-    <img src = {product.image} />
-    <p>{product.description}</p>
-    <p>{product.price}</p>
-     <div>
-       <Review />
-     </div>
-    </div>
+    return (
+      <div>
+        <div>
+            <h1>{product.title}</h1>
+        </div>
+        <img src = {product.image} />
+        <p>{product.description}</p>
+        <p>{product.price}</p>
+        <div>
+          <Review />
+        </div>
+      </div>
   )
  }
 }
