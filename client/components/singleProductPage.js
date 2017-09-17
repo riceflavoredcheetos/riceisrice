@@ -23,7 +23,7 @@ class SingleProduct extends React.Component{
     <p>{product.description}</p>
     <p>{product.price}</p>
      <div>
-       <Review reviews={product.reviews}/>
+       <Review />
      </div>
     </div>
   )

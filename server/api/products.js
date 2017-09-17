@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product, productType, Category, Review } = require("../db/models");
+const { Product, productType, Category } = require("../db/models");
 
 //get all products
 router.get("/", (req, res, next) => {
@@ -17,7 +17,7 @@ router.get("/:productId", (req, res, next) => {
   Product.findOne({
       where: {
           id:productId,
-       }, include:[Category, Review]})
+       }, include:[Category]})
     .then(singleProduct => res.json(singleProduct))
     .catch(next);
 });

@@ -5,12 +5,13 @@ import user from './user'
 import AllProducts from './allProducts'
 import SingleProduct from './singleProduct'
 import CurrentUser from './currentUser'
+import Reviews from './reviews'
 
 import SearchBar from './searchBar';
 
 //ADD REDUCERS HERE
 
-const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, SearchBar})
+const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, SearchBar, Reviews})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 

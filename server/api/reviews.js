@@ -4,7 +4,6 @@ const {Review} = require('../db/models');
 //get all product reviews
 router.get('/:productId', (req, res, next) => {
     let productId = req.params.productId;
-    console.log('im here')
     Review.findAll({where: {productId}})
         .then(reviews => res.json(reviews))
         .catch(next);
@@ -31,7 +30,6 @@ router.put('/:reviewId', (req, res, next) => {
 //admin feature : delete review
 router.delete('/:reviewId', (req, res, next) => {
     let id = req.params.reviewId;
-
     Review.destroy({where: {id}})
         .then(() => res.sendStatus(204))
         .catch(next)
