@@ -11,25 +11,29 @@ class Product extends React.Component {
 
   render() {
     const rice = this.props.AllProducts;
-    console.log("props", this.props)
+    console.log("props", this.props.getProduct)
     let rand = Math.floor(Math.random()*(rice.length))
     console.log("Rand", rand, rice)
     let Rice = rice[rand]
-
-    return (
+    if(rice.length<1){
+      return (
+      <div></div>
+      )
+    } else {
+    return(
       <div>
         <div className="list-group">
-              <Link
-                to={`/product/${Rice.id}`}
+              {/* <Link
+                to={`/product/$`}
                 className="list-group-item"
-                  >
-                <h4 className="list-group-item-heading">{Rice.title}</h4>
-                <p className="list-group-item-text">{Rice.description}</p>
-              </Link>
+                  > */}
+                <h4 className="list-group-item-heading"></h4>
+                <p className="list-group-item-text"></p>
+              {/* </Link> */}
         </div>
       </div>
     )
-  }
+  }}
 }
 
 const mapState = state => {
@@ -42,10 +46,11 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getProduct: function() {
+      console.log("GETTing Product")
       const action = getAllProducts();
       dispatch(action);
     }
-  };``
+  };
 } ;
 
 export default withRouter(connect(mapState, mapDispatch)(Product));

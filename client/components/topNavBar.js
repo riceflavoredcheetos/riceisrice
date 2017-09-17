@@ -1,23 +1,20 @@
-import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { logoutAndSendtoFrontPage as logoutUser } from '../store/currentUser';
+import histroy from '../history'
 
-export default class TopNavBar extends React.Component {
+
+export class TopNavBar extends React.Component {
   constructor() {
     super();
     this.state = {};
-  }
-
-  handleClick() {
-    let trigger = true;
-    console.log("clicked");
-    if (trigger) {
-      return <loginPage />;
-    }
-
-    !trigger;
+    this.renderLoginSignup = this.renderLoginSignup.bind(this);
+    this.renderLogout = this.renderLogout.bind(this);
   }
 
   render() {
+
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -55,13 +52,66 @@ export default class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
+              { (this.props.CurrentUser === null) ? this.renderLoginSignup() : this.renderLogout() }
             </ul>
           </div>
         </div>
       </nav>
     );
   }
+
+  renderLoginSignup() {
+    return (
+      <ul className="nav navbar-nav navbar-right">
+        <li>
+         <Link to="/signup" className="navbar-btn btn btn-default">signup</Link>
+        </li>
+        <li>
+          <Link to="/login" className="navbar-btn btn btn-default">login</Link>
+        </li>
+      </ul>
+    );
+  }
+
+  renderLogout() {
+    const name = this.props.CurrentUser.name || this.props.CurrentUser.email;
+    return (
+      <ul className="nav navbar-nav navbar-right">
+        <li>
+
+        <Link to='/home' className="navbar-btn btn btn-default">
+          Account
+        </Link>
+
+        <button
+          id='logoutButton'
+          className="navbar-btn btn btn-default"
+          onClick={this.props.logout}>
+          logout {name}
+        </button>
+
+        </li>
+      </ul>
+    );
+  }
+
 }
+
+
+/* ------------------   CONTAINER    ------------------ */
+
+const mapState = state => {
+  return {
+    CurrentUser: state.CurrentUser
+  }
+}
+
+//create mapDispatch with logout function 
+const mapDispatch = dispatch => ({
+  logout: () => { dispatch(logoutUser()) },
+  linkToAccount: () => {
+   return history.push('/accountpage')
+  }
+})
+
+export default connect(mapState, mapDispatch)(TopNavBar)

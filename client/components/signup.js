@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signup } from '../store/currentUser';
+import { signupAndRedirect } from '../store/currentUser';
 
 
-export class SignUp extends React.Component {
+class Signup extends React.Component {
     constructor(props) {
         super(props);
         this.onSignupSubmit = this.onSignupSubmit.bind(this);
@@ -24,7 +24,6 @@ export class SignUp extends React.Component {
         )
     }
 
-
     onSignupSubmit(event) {
         event.preventDefault();
         const { email, password } = event.target;
@@ -32,17 +31,14 @@ export class SignUp extends React.Component {
             email: email.value,
             password: password.value
         }
-
-        console.log('user', user);
-
+        
         this.props.reactSignup(user);
     }
-
 }
 
 const mapDispatch = dispatch => { 
     return {
-        reactSignup: user => dispatch(signup(user))
+        reactSignup: user => dispatch(signupAndRedirect(user))
     }
 }
 
@@ -50,4 +46,4 @@ const mapState = state => {
     return state;
 }
 
-export default connect(mapState, mapDispatch)(SignUp);
+export default connect(mapState, mapDispatch)(Signup);

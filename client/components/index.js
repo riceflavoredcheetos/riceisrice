@@ -13,5 +13,6 @@ export { default as Cart } from "./cartPage";
 export { default as Checkout } from "./checkoutPage";
 export { default as About } from "./about";
 export { default as Products } from "./shop";
+export { default as Signup } from "./signup";
 
-export { Login, Signup } from "./auth-form";
+// export { Login, Signup } from "./auth-form";
