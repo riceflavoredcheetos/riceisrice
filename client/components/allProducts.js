@@ -25,7 +25,8 @@ class Product extends React.Component {
       <div></div>
       )
     } else {
-    return(
+
+    return (
       <div>
         <div className="list-group">
               <Link
