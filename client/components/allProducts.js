@@ -7,11 +7,9 @@ class Product extends React.Component {
 
 
 
-
   componentDidMount() {
     this.props.getProduct();
   }
-
 
   render() {
     const rice = this.props.AllProducts;
