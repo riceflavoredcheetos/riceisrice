@@ -9,12 +9,10 @@ class Product extends React.Component {
     super(props)
   }
 
-
   componentDidMount() {
     console.log("ResData")
-    // this.props.getProduct();
+    this.props.getProduct();
   }
-
 
   render() {
     const rice = this.props.AllProducts;
@@ -30,13 +28,13 @@ class Product extends React.Component {
     return(
       <div>
         <div className="list-group">
-              {/* <Link
+              <Link
                 to={`/product/$`}
                 className="list-group-item"
-                  > */}
-                <h4 className="list-group-item-heading"></h4>
-                <p className="list-group-item-text"></p>
-              {/* </Link> */}
+                  >
+                <h4 className="list-group-item-heading">{Rice.title}</h4>
+                <p className="list-group-item-text">{Rice.description}</p>
+              </Link>
         </div>
       </div>
     )
