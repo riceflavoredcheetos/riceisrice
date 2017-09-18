@@ -21,6 +21,7 @@ router.put('/', (req, res, next) => {
     .then(user => {
         if (user) {
             req.session.userId = user.id;
+            req.session.isAdmin = user.isAdmin;
             res.status(200).json(user);
         } else {
             res.send('Invalid login, please try again.').status(401);
