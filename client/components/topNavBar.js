@@ -50,11 +50,7 @@ export class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
-              {this.props.CurrentUser === null ? (
-                this.renderLoginSignup()
-              ) : (
-                this.renderLogout()
-              )}
+              { this.props.currentUser === null ? (this.renderLoginSignup()) : (this.renderLogout()) }
             </ul>
           </div>
         </div>
@@ -80,7 +76,7 @@ export class TopNavBar extends React.Component {
   }
 
   renderLogout() {
-    const name = this.props.CurrentUser.name || this.props.CurrentUser.email;
+    const name = this.props.currentUser.name || this.props.currentUser.email;
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
@@ -105,7 +101,7 @@ export class TopNavBar extends React.Component {
 
 const mapState = state => {
   return {
-    CurrentUser: state.CurrentUser
+    currentUser: state.currentUser
   };
 };
 

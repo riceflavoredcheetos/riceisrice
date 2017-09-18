@@ -22,7 +22,7 @@ router.put('/', (req, res, next) => {
         if (user) {
             console.log("PUT")
             req.session.userId = user.id;
-            req.session.cart = []
+            req.session.isAdmin = user.isAdmin;
             res.status(200).json(user);
 
         } else {
