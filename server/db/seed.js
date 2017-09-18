@@ -13,20 +13,24 @@ const users = [
   {
     email: "luke@riceisrice.com",
     password: "luke777",
-    isAdmin: true
+    isAdmin: true,
+    googleId: null
   },
   {
     email: "denis@riceisrice.com",
     password: "denis777",
-    isAdmin: true
+    isAdmin: true,
+    googleId: null
   },
   {
     email: "anuj@riceisrice.com",
-    password: "anuj777"
+    password: "anuj777",
+    googleId: null
   },
   {
     email: "jordan@riceisrice.com",
-    password: "jordan777"
+    password: "jordan777",
+    googleId: null
   }
 ];
 
