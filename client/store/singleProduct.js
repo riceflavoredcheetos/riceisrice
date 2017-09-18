@@ -23,6 +23,13 @@ export const GET_PRODUCT = 'GET_PRODUCT'
           dispatch(getProduct(res.data))})
         .catch(err => console.log(err))
 
+
+export const addToCart = (product) =>
+    dispatch =>
+      axios.post('/auth/me/cart', product)
+
+
+
 /**
  * REDUCER
  */

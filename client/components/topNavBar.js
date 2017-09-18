@@ -58,7 +58,7 @@ export class TopNavBar extends React.Component {
     );
   }
 
-  renderLoginSignup() {
+  renderLoginSignup () {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>

@@ -10,23 +10,23 @@ const LOGOUT_OUT = 'LOGOUT_OUT';
 
 //ACTION CREATORS
 
-const loginCurrentUser = user => { type: LOGIN_CURRENT_USER, user };
-const signupUser = user => {type: SIGNUP_CURRENT_USER, user};
-const logoutUser = () => {type: LOGOUT_OUT};
+const loginCurrentUser = user => ({ type: LOGIN_CURRENT_USER, user });
+const signupUser = user => ({type: SIGNUP_CURRENT_USER, user});
+const logoutUser = () =>({type: LOGOUT_OUT});
 
 //REDUCER
 
 export default function (currentUser = {}, action) {
     switch (action.type) {
 
-        case LOGIN_CURRENT_USER: 
+        case LOGIN_CURRENT_USER:
             return action.user;
-        
+
         case SIGNUP_CURRENT_USER:
             return action.user;
 
         case LOGOUT_OUT:
-            return null;
+            return {};
 
         default:
             return currentUser;
@@ -43,17 +43,17 @@ const logErr = err => console.error(err);
 
 
 export const signup = credentials => {
-    return dispatch => 
-     //network request 
+    return dispatch =>
+     //network request
          axios.post('/auth/me/signup', credentials) //credentials are sent as req.body
          .then(resToData)
          .then(user => {
              dispatch({type: SIGNUP_CURRENT_USER, user});
          })
-         .catch(logErr)  
+         .catch(logErr)
  }
 
- 
+
  export const signupAndRedirect = credentials => {
      return dispatch => {
           dispatch(signup(credentials))
@@ -88,9 +88,9 @@ export const loginAndSendtoUserHome = creditials => {
 }
 
 export const logout = () => {
-    return dispatch => 
+    return dispatch =>
         axios.delete('/auth/me')
-        .then(dispatch({type: LOGOUT_OUT})) 
+        .then(dispatch({type: LOGOUT_OUT}))
         .catch(logErr)
 }
 
@@ -104,8 +104,8 @@ export const logoutAndSendtoFrontPage = () => {
     }
 }
 
-export const fetchLoggedInUser = () => 
-    dispatch => 
+export const fetchLoggedInUser = () =>
+    dispatch =>
         axios.get('/auth/me')
         .then(resToData)
         .then(user => {
