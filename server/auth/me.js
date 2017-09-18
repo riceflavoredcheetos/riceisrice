@@ -35,11 +35,15 @@ router.put('/', (req, res, next) => {
 // STILL DOES NOT PROPERLY ADD TO SESSIONS
 
 router.post('/cart', (req, res, next) => {
-    console.log("Sessions:", req.session, "req.body", req.body)
-     let newCart = req.session.cart||[]
-     req.session.cart = [...newCart , req.body]
-    //  return Object.assign([], newCart, req.body)
+    console.log("Sessions:", req.session,)
 
+    req.session.cart = req.session.cart||[]
+    console.log("after req.session.cart", req.session.cart)
+    req.session.cart.push(req.body)
+    console.log("after req.session.cart after pushing", req.session.cart)
+     //req.session.cart = [...newCart , req.body]
+    //  return Object.assign([], newCart, req.body)
+    res.json({})
 })
 
 
