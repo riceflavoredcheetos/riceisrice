@@ -9,8 +9,8 @@ import Reviews from './reviews'
 import SearchBar from './searchBar'
 
 //ADD REDUCERS HERE
-//CHANGE TO CAMELCASE******
-const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, SearchBar, Reviews})
+
+const reducer = combineReducers({user, AllProducts, CurrentUser, SingleProduct, Reviews})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 
