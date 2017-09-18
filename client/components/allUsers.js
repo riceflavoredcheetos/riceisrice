@@ -52,11 +52,34 @@ export class AllUsers extends React.Component {
                people.map( person => {
                 return (
                <tr key={person.id} onClick = {triggered(person)}>
-                  <td>{person.edit?'edit':person.id}</td>
-                  <td>{person.edit?'edit':person.name}</td>
-                  <td>{person.edit?'edit':person.email}</td>
-                  <td>{person.edit?'edit':person.password}</td>
-                  <td>{person.edit?'edit':person.isAdmin.toString()}</td>
+                  <td>{person.id}</td>
+                  <td>{person.edit? <input
+                    className="form-control"
+                    type="text"
+                    name="name"
+                    defaultValue={person.name}
+                    placeholder={person.name}
+                  />:person.name}</td>
+                  <td>{person.edit?<input
+                    className="form-control"
+                    type="text"
+                    name="email"
+                    defaultValue={person.email}
+                    placeholder={person.email}
+                  />:person.email}</td>
+                  <td>{person.edit?<input
+                    className="form-control"
+                    type="text"
+                    name="password"
+                    defaultValue={person.password}
+                    placeholder={person.password}
+                  />:person.password}</td>
+                  <td>{person.edit?<select>
+                    <option value={true}>True</option>
+                    <option value={false}>False</option>
+                  </select>:person.isAdmin.toString()}</td>
+                  <td>{person.edit?<span><a href="#" className="btn btn-info">Submit</a>
+                  <a href="#" className="btn btn-danger">Remove</a></span>:''}</td>
                </tr>
                 )
                })

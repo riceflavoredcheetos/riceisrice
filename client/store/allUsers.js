@@ -23,6 +23,7 @@ export const GET_USERS = 'GET_USERS'
           dispatch(getUsers(res.data))})
         .catch(err => console.log(err))
 
+
 /**
  * REDUCER
  */
