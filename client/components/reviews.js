@@ -81,7 +81,7 @@ class Review extends React.Component {
                   <div>
                   <h4 style={display}>{review.content} &emsp;</h4>
                   <button type="button" className="btn btn-warning" style={display} onClick={() => this.changeState(review.id, review.content)}>Edit</button>
-                  <h5 style={display}>or</h5>
+                  <h5 style={display}>&emsp;</h5>
                   <button type="button" className="btn btn-danger" style={display} onClick={() => this.props.deleteReview(review.id)}>Delete</button>
                   </div>
               }
@@ -90,7 +90,7 @@ class Review extends React.Component {
           <br/>
           {!this.state.addingReview
             ?
-            <button type="button" className="btn btn-info" onClick={this.addReview}>Add More Reviews For This Product</button>
+            <button type="button" className="btn btn-info" onClick={this.addReview}>Add More Review For This Product</button>
             :
             <form>
               <input type="text" className="form-control" placeholder="Add Your Review Here" onChange={this.addingReview}/>
