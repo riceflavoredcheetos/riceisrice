@@ -21,12 +21,10 @@ export class AdminHome extends React.Component {
                     <div id="products">
                         <h2><Link to='/admin_allproducts'>Products/Categories</Link></h2>
                     </div>
-
                     <div id="userManagement">
-                        <h2>User Management</h2>
+                        <h2><Link to="/users"> User Management</Link></h2>
                     </div>
                 </div>
-
             </div>
         )
     }

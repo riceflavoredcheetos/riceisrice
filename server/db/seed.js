@@ -11,23 +11,53 @@ const {
 
 const users = [
   {
+    name: 'Luke Rice',
     email: "luke@riceisrice.com",
     password: "luke777",
     isAdmin: true
   },
   {
+    name: 'Denis Rice',
     email: "denis@riceisrice.com",
     password: "denis777",
     isAdmin: true
   },
   {
+    name: 'Anuj Rice',
     email: "anuj@riceisrice.com",
-    password: "anuj777"
+    password: "anuj777",
+    isAdmin: true,
   },
   {
+    name: 'Jordan Rice',
     email: "jordan@riceisrice.com",
-    password: "jordan777"
-  }
+    password: "jordan777",
+    isAdmin: true,
+  },
+  {
+    name: 'Ray Rice',
+    email: "RR@riceisrice.com",
+    password: "ray777",
+    isAdmin: false,
+  },
+  {
+    name: 'Peter Griffin',
+    email: "PeatearGryfon@riceisrice.com",
+    password: "peatear",
+    isAdmin: false,
+  },
+  {
+    name: 'Kim Jun Un',
+    email: "rulernumberone@yahoo.com",
+    password: "iloveusa",
+    isAdmin: false,
+  },
+  {
+    name: 'Donald Trump',
+    email: "XxnycgansterXx@google.com",
+    password: "ivanka",
+    isAdmin: false,
+  },
 ];
 
 const products = [

@@ -17,4 +17,5 @@ export { default as AdminHome } from "./adminHome";
 export { default as UserOrders } from "./userOrders";
 export { default as AdminAllOrders } from "./adminAllOrders";
 export { default as AllProducts } from "./allProducts";
+export { default as AllUsers} from "./allUsers";
 // export { Login, Signup } from "./auth-form";

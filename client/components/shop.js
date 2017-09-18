@@ -31,7 +31,6 @@ class Products extends React.Component {
       title = rice.length + ' products for ' + keyword;
     }
 
-
     return (
       <div>
         <form onSubmit={this.onFormSubmit} className="input-group">
