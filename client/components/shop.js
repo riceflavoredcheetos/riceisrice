@@ -5,6 +5,10 @@ import { withRouter, Link } from "react-router-dom";
 import { logout } from "../store";
 import { getAllProducts } from "../store/allProducts";
 
+const Center = {
+  textAlign: "center"
+};
+
 class Products extends React.Component {
   constructor() {
     super();
@@ -26,9 +30,7 @@ class Products extends React.Component {
       rice = rice.filter(item => item.title.toLowerCase().includes(keyword.toLowerCase()) || item.description.toLowerCase().includes(keyword.toLowerCase()))
       title = rice.length + ' products for ' + keyword;
     }
-    const Center = {
-      textAlign: "center"
-    };
+
 
     return (
       <div>

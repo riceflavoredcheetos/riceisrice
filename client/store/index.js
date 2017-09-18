@@ -6,6 +6,7 @@ import AllProducts from './allProducts'
 import SingleProduct from './singleProduct'
 import CurrentUser from './currentUser'
 import Reviews from './reviews'
+import SearchBar from './searchBar'
 
 //ADD REDUCERS HERE
 

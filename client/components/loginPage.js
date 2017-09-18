@@ -22,12 +22,8 @@ export class LoginPage extends React.Component {
                     </label>
                         <button type="submit" name="Login"/>Login
                 </form>
-            
+
                         <Link to='/signup'>Signup</Link>
-               
-
-
-
             </div>
         )
     }
@@ -40,7 +36,6 @@ export class LoginPage extends React.Component {
             email: email.value,
             password: password.value
         }
-
         this.props.reactLogin(user)
     }
 }
@@ -51,8 +46,8 @@ const mapDispatch = dispatch => {
     }
 }
 
-const mapState = state => {
-    return state;
-}
+// const mapState = state => {
+//     return state;
+// }
 
-export default connect(mapState, mapDispatch)(LoginPage)
+export default connect(null, mapDispatch)(LoginPage)

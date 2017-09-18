@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {getSingleProduct} from '../store/singleProduct'
+import {getSingleProduct, addToCart} from '../store/singleProduct'
 import Review from './reviews'
+
 
 
 class SingleProduct extends React.Component{
@@ -13,6 +14,7 @@ class SingleProduct extends React.Component{
   }
 
   render(){
+
     const product = this.props.singleProduct
     return (
       <div>
@@ -23,6 +25,7 @@ class SingleProduct extends React.Component{
         <p>{product.description}</p>
         <p>{product.price}</p>
         <div>
+        <a href="#" className="btn btn-default" onClick ={this.props.handleSubmit(product)}>BUY</a>
           <Review />
         </div>
       </div>
@@ -44,6 +47,10 @@ const mapDispatch = (dispatch) => {
     return {
       loadProduct: (productId) => {
         dispatch(getSingleProduct(productId))
+      },
+      handleSubmit: (product) =>  () => {
+        console.log("HandleSubmit triggered")
+        dispatch(addToCart(product))
       }
     }
 }
