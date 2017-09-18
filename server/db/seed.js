@@ -12,11 +12,13 @@ const {
 const users = [
   {
     email: "luke@riceisrice.com",
-    password: "luke777"
+    password: "luke777",
+    isAdmin: true
   },
   {
     email: "denis@riceisrice.com",
-    password: "denis777"
+    password: "denis777",
+    isAdmin: true
   },
   {
     email: "anuj@riceisrice.com",
@@ -153,11 +155,23 @@ const categories = [
   },
   {
     id: 4,
-    type: "premium"
+    type: "Federal Democratic Republic of Nepal"
   },
   {
     id: 5,
+    type: "Japan"
+  },
+  {
+    id: 6,
+    type: "premium"
+  },
+  {
+    id: 7,
     type: "organic"
+  },
+  {
+    id: 8,
+    type: "affordable"
   }
 ];
 
