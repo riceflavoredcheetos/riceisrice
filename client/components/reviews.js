@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-import {getReviewThunk, updateThunk, removeThunk} from '../store/reviews';
+import {addReviewThunk, getReviewThunk, updateThunk, removeThunk} from '../store/reviews';
 
 const display = {
     display: "inline"
@@ -15,11 +15,16 @@ class Review extends React.Component {
     super(props);
     this.state = {
       editing: null,
+      newReview: '',
+      addingReview: false,
       newReview: ''
     }
     this.changeState = this.changeState.bind(this);
     this.changeReview = this.changeReview.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addReview = this.addReview.bind(this);
+    this.addingReview = this.addingReview.bind(this);
+    this.passingReviewToProps = this.passingReviewToProps.bind(this);
   }
   
   componentDidMount() {
@@ -27,9 +32,9 @@ class Review extends React.Component {
     this.props.getReviews(productId);
   }
 
-  changeState = (id) => {
+  changeState = (id, currentReview) => {
     const editing = this.props.editing;
-    this.setState({editing: id});
+    this.setState({editing: id, newReview: currentReview});
   }
 
   changeReview = (review) => {
@@ -39,6 +44,21 @@ class Review extends React.Component {
   handleSubmit = (id, review) => {
     this.props.updateReview(id, review);
     this.setState({editing: null, newReview: ''});
+  }
+
+  addReview = () => {
+    this.setState({addingReview: !this.state.addingReview})
+  }
+
+  addingReview = (event) => {
+    this.setState({newReview: event.target.value})
+  }
+
+  passingReviewToProps = () => {
+    const productId = this.props.match.params.productId;
+    const newReview = this.state.newReview;
+    this.setState({addingReview: false, newReview: ''})
+    this.props.addReview(productId, newReview)
   }
   
   render() {    
@@ -60,13 +80,23 @@ class Review extends React.Component {
                 : 
                   <div>
                   <h4 style={display}>{review.content} &emsp;</h4>
-                  <button type="button" className="btn btn-warning" style={display} onClick={() => this.changeState(review.id)}>Edit</button>
+                  <button type="button" className="btn btn-warning" style={display} onClick={() => this.changeState(review.id, review.content)}>Edit</button>
                   <h5 style={display}>or</h5>
                   <button type="button" className="btn btn-danger" style={display} onClick={() => this.props.deleteReview(review.id)}>Delete</button>
                   </div>
               }
             </div>
           ))}
+          <br/>
+          {!this.state.addingReview
+            ?
+            <button type="button" className="btn btn-info" onClick={this.addReview}>Add More Reviews For This Product</button>
+            :
+            <form>
+              <input type="text" className="form-control" placeholder="Add Your Review Here" onChange={this.addingReview}/>
+              <button type="button" className="btn btn-success" onClick={this.passingReviewToProps}>Submit</button>
+            </form>
+          }
       </div>
         )
     }
@@ -77,7 +107,6 @@ class Review extends React.Component {
  */
 
 const mapState = (state) => {
-  console.log('here is my state ', state)
  return {
    reviews: state.Reviews,
  }
@@ -85,6 +114,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch, ownProps) => {
     return {
+      addReview: (productId, review) => {
+        dispatch(addReviewThunk({content: review, productId}))
+      },
       getReviews: (productId) => {
         dispatch(getReviewThunk(productId))
       },
