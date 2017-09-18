@@ -8,7 +8,6 @@ module.exports = router;
 //Get all users
 router.get("/", (req, res, next) => {
   User.findAll({
-    attributes: ["id", "email"]
   })
     .then(users => res.json(users))
     .catch(next);
@@ -22,8 +21,6 @@ router.get("/:userId", (req, res, next) => {
     .then(user => res.json(user))
     .catch(next);
 });
-
-
 
 
 //create new user
