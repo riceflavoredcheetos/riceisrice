@@ -20,6 +20,7 @@ router.put('/', (req, res, next) => {
     })
     .then(user => {
         if (user) {
+            console.log("PUT")
             req.session.userId = user.id;
             req.session.cart = []
             res.status(200).json(user);
@@ -34,7 +35,7 @@ router.put('/', (req, res, next) => {
 router.post('/cart', (req, res, next) => {
     console.log("Req.session info:", req.session)
     let newCart = req.session.cart
-            if(newCart.length>1){
+            if(newCart.length>0){
                 newCart.push(req.body)
                 req.session.cart = newCart
                 console.log("pushed", req.session)

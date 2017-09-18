@@ -26,7 +26,7 @@ export default function (currentUser = {}, action) {
             return action.user;
 
         case LOGOUT_OUT:
-            return null;
+            return {};
 
         default:
             return currentUser;

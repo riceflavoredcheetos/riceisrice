@@ -25,6 +25,7 @@ class SingleProduct extends React.Component{
         <p>{product.description}</p>
         <p>{product.price}</p>
         <div>
+        <a href="#" className="btn btn-default" onClick ={this.props.handleSubmit(product)}>BUY</a>
           <Review />
         </div>
       </div>
@@ -47,7 +48,7 @@ const mapDispatch = (dispatch) => {
       loadProduct: (productId) => {
         dispatch(getSingleProduct(productId))
       },
-      handleSubmit: (product) => {
+      handleSubmit: (product) =>  () => {
         console.log("HandleSubmit triggered")
         dispatch(addToCart(product))
       }

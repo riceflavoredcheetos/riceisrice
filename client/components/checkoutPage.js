@@ -29,3 +29,6 @@ const Checkout = () => {
  }
 
  export default withRouter(connect(mapState, mapDispatch)(Checkout))
+
+
+ //UPDATE WITH ROUTER

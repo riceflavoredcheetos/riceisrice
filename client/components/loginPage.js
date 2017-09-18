@@ -46,8 +46,8 @@ const mapDispatch = dispatch => {
     }
 }
 
-const mapState = state => {
-    return state;
-}
+// const mapState = state => {
+//     return state;
+// }
 
-export default connect(mapState, mapDispatch)(LoginPage)
+export default connect(null, mapDispatch)(LoginPage)
