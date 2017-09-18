@@ -50,7 +50,7 @@ export class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
-              { this.props.currentUser === null ? (this.renderLoginSignup()) : (this.renderLogout()) }
+              { this.props.currentUser ? (this.renderLogout()) : (this.renderLoginSignup()) }
             </ul>
           </div>
         </div>

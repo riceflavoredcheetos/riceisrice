@@ -68,7 +68,7 @@ router.post('/signup', (req, res, next) => {
 
 //logout 'me'
 router.delete('/', function(req, res, next) {
-    req.session.destroy();
+    delete req.session.userId;
     res.sendStatus(200);
 })
 
