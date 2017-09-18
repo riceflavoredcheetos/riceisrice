@@ -81,7 +81,7 @@ export const loginAndSendtoUserHome = creditials => {
     return dispatch => {
         dispatch(login(creditials))
             .then(user => {
-                history.push('/home')
+                history.push('/home') 
             })
             .catch(logErr)
     }
