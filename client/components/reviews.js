@@ -26,7 +26,7 @@ class Review extends React.Component {
     this.addingReview = this.addingReview.bind(this);
     this.passingReviewToProps = this.passingReviewToProps.bind(this);
   }
-  
+
   componentDidMount() {
     const productId = this.props.match.params.productId;
     this.props.getReviews(productId);
@@ -45,6 +45,9 @@ class Review extends React.Component {
     this.props.updateReview(id, review);
     this.setState({editing: null, newReview: ''});
   }
+
+  render() {
+    let title = 'REVIEWS';
 
   addReview = () => {
     this.setState({addingReview: !this.state.addingReview})
@@ -66,19 +69,22 @@ class Review extends React.Component {
     const reviews = this.props.reviews;
     const editing = this.state.editing;
     const newReview = this.state.newReview;
+    if (reviews.length === 0) {
+      title = 'NO REVIEWS FOUND'
+    }
     return (
       <div>
-        <h3>This is what others are saying about this product: </h3>
-          {reviews.length && reviews.map(review => (
+        <h3>{title}</h3>
+          {reviews.length >= 1 && reviews.map(review => (
             <div key={review.id}>
               {
-                editing === review.id 
-                ? 
+                editing === review.id
+                ?
                   <form>
                   <input type="text" name="newReview" className="form-control" defaultValue={review.content} onChange={event => this.changeReview(event.target.value)}/>
                   <button type="button" className="btn btn-success" onClick={() => this.handleSubmit(review.id, newReview)}>Submit</button>
                   </form>
-                : 
+                :
                   <div>
                   <h4 style={display}>{review.content} &emsp;</h4>
                   <button type="button" className="btn btn-warning" style={display} onClick={() => this.changeState(review.id, review.content)}>Edit</button>

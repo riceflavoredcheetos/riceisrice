@@ -177,35 +177,28 @@ const reviews = [
 
 const categories = [
   {
-    id: 1,
     type: "United States of America"
   },
   {
-    id: 2,
     type: "Republic of Korea"
   },
   {
-    id: 3,
     type: "Republic of China"
   },
   {
-    id: 4,
     type: "Federal Democratic Republic of Nepal"
   },
   {
-    id: 5,
+
     type: "Japan"
   },
   {
-    id: 6,
     type: "premium"
   },
   {
-    id: 7,
     type: "organic"
   },
   {
-    id: 8,
     type: "affordable"
   }
 ];
