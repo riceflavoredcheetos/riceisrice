@@ -54,7 +54,6 @@ router.get('/cart', (req, res, next) => {
 router.post('/cart', (req, res, next) => {
     req.session.cart = req.session.cart||[]
     req.session.cart.push(req.body)
-    console.log('session current ', req.session)
     res.json({})
 })
 

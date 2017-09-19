@@ -27,6 +27,7 @@ export class AllUsers extends React.Component {
     this.handlePassword=this.handlePassword.bind(this)
     this.handleAdminStatus=this.handleAdminStatus.bind(this)
     this.submitting= this.submitting.bind(this)
+    this.handleDelete=this.handleDelete.bind(this)
   }
 
   componentDidMount(){
@@ -51,6 +52,16 @@ export class AllUsers extends React.Component {
     })
   }
 
+  handleDelete(person){
+    return () => {
+      axios.delete(`/api/users/${person.id}`)
+      .then(()=>{
+        this.props.loadUsers();
+        this.forceUpdate();
+      })
+    }
+  }
+
   handleAdminStatus(event){
     this.setState({
       tempAdmin: event.target.value
@@ -59,33 +70,31 @@ export class AllUsers extends React.Component {
 
   submitting = (person) => {
     return () => {
-      person.edit=false;
-       axios.put(`/api/user/${[person.id]}`, {
+       axios.put(`/api/users/${[person.id]}`, {
           name:this.state.tempName,
           email: this.state.tempEmail,
           password: this.state.tempPassword,
           admin: this.state.tempAdmin,
        })
       .then(()=>{
+        person.edit = false
         this.setState({
         tempName: '',
         tempAdmin: '',
         tempPassword: '',
         tempAdmin: false
       })
+      this.props.loadUsers();
       console.log("Submitting Person:", person)
     })
 
   }}
 
-
     render() {
       const people = this.props.AllUsers
-      console.log("People:", people )
       const triggered= (person) =>{
         return () => {
           person.edit = true;
-          console.log("TRIGGERED", person)
           this.forceUpdate();
         }
       }
@@ -119,30 +128,27 @@ export class AllUsers extends React.Component {
                   <td>{person.edit? <input
                     className="form-control"
                     type="text"
-                    name="name"
-
-                    placeholder={person.name} onChange ={this.handleName}
+                    placeholder={person.name}
+                    defaultValue={person.name}
+                    onChange ={this.handleName}
                   />:person.name}</td>
                   <td>{person.edit?<input
                     className="form-control"
                     type="text"
-                    name="email"
-
-                    placeholder={person.email}
+                    placeholder={person.email}  defaultValue={person.email}
+                    onChange ={this.handleEmail}
                   />:person.email}</td>
                   <td>{person.edit?<input
                     className="form-control"
                     type="text"
-                    name="password"
-
-                    placeholder={person.password}
+                    placeholder={person.password}   defaultValue={person.password} onChange ={this.handlePassword}
                   />:person.password}</td>
-                  <td>{person.edit?<select>
+                  <td>{person.edit?<select onChange ={this.handleAdminStatus}>
                     <option value={true}>True</option>
                     <option value={false}>False</option>
                   </select>:person.isAdmin.toString()}</td>
                   <td>{person.edit?<span><a href="#" className="btn btn-info" type="submit" onClick={this.submitting(person)} >Submit</a>
-                  <a href="#" className="btn btn-danger">Remove</a></span>:''}</td>
+                  <a href="#" className="btn btn-danger" onClick = {this.handleDelete(person)}>Remove</a></span>:''}</td>
                </tr>
                 )
                })
