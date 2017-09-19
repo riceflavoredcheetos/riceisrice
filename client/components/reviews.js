@@ -46,9 +46,6 @@ class Review extends React.Component {
     this.setState({editing: null, newReview: ''});
   }
 
-  render() {
-    let title = 'REVIEWS';
-
   addReview = () => {
     this.setState({addingReview: !this.state.addingReview})
   }
@@ -64,14 +61,17 @@ class Review extends React.Component {
     this.setState({addingReview: false, newReview: ''})
     this.props.addReview(productId, newReview)
   }
-  
-  render() {    
+
+  render() {
+    let title = 'REVIEWS'
     const reviews = this.props.reviews;
     const editing = this.state.editing;
     const newReview = this.state.newReview;
+
     if (reviews.length === 0) {
       title = 'NO REVIEWS FOUND'
     }
+
     return (
       <div>
         <h3>{title}</h3>
@@ -105,8 +105,8 @@ class Review extends React.Component {
             </form>
           }
       </div>
-        )
-    }
+      )
+  }
 }
 
 /**
