@@ -49,6 +49,7 @@ router.post('/cart', (req, res, next) => {
                 req.session.cart = newCart
                 console.log("added", req.session)
             }
+})
 
 //GET: current cart for user (logged in and guest)
 router.get('/cart', (req, res, next) => {
