@@ -7,7 +7,6 @@ router.get('/', (req, res, next) => {
     res.json(req.user);
 })
 
-
 //find user
 router.put('/', (req, res, next) => {
     const { email, password } = req.body;
@@ -17,19 +16,24 @@ router.put('/', (req, res, next) => {
     })
     .then(user => {
         if (user) {
+
             req.login(user, err => {
                 if (err) return next(err)
                 res.json(user)
             })
-            // req.session.userId = user.id;
-            // req.session.isAdmin = user.isAdmin;
-            // res.status(200).json(user);
+
+            req.session.userId = user.id;
+            req.session.isAdmin = user.isAdmin;
+            res.status(200).json(user);
+
+
         } else {
             res.send('Invalid login, please try again.').status(401);
         }
     })
     .catch(next);
 })
+
 
 
 router.post('/cart', (req, res, next) => {
@@ -46,8 +50,19 @@ router.post('/cart', (req, res, next) => {
                 console.log("added", req.session)
             }
 
+//GET: current cart for user (logged in and guest)
+router.get('/cart', (req, res, next) => {
+    res.json(req.session.cart)
+
 })
 
+//POST: request to add items to cart
+router.post('/cart', (req, res, next) => {
+    req.session.cart = req.session.cart||[]
+    req.session.cart.push(req.body)
+    console.log('session current ', res.session.cart)
+    res.json({})
+})
 
 //create user
 router.post('/signup', (req, res, next) => {

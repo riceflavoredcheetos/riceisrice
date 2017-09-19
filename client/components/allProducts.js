@@ -13,27 +13,23 @@ class Product extends React.Component {
 
   render() {
     const rice = this.props.AllProducts;
-
     let rand = Math.floor(Math.random()*(rice.length))
 
     let Rice = rice[rand]
+    console.log('my rice ', Rice)
     if (rice.length < 1){
       return (
       <div></div>
       )
     } else {
     return (
-      <div>
-        <div className="list-group">
-              <Link
-                to={`/product/${Rice.id}`}
-                className="list-group-item"
-                  >
-                <h4 className="list-group-item-heading">{Rice.title}</h4>
-                <p className="list-group-item-text">{Rice.description}</p>
-              </Link>
+      <section>
+        <img className="featuredImage" src={Rice.image}/>
+        <div className="featuredImage display stylizedText">
+          <p><strong>Product Name:</strong> {Rice.title}</p>
+          <p><strong>Price:</strong> {Rice.price}</p>
         </div>
-      </div>
+      </section>
     )
   }}
 }

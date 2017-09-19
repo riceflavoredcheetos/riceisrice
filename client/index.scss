@@ -26,3 +26,52 @@ body {
     display: inline-block;
   }
 }
+
+.jumbotron {
+  background-image:
+  url("https://cdn.theconversation.com/files/90353/wide_article/width1356x668/dydjpgbz-1438275949.jpg");
+  background-size: cover;
+  height: 500px
+}
+
+.jumbotron h1 {
+  color: white;
+  position: absolute;
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: center;
+  font-family: 'Open Sans';
+  margin-top: 15%
+}
+
+.centerText {
+  text-align: center
+}
+
+.featuredImage {
+  padding-left: 10%;
+  width: 45%;
+  height: 45%
+}
+
+.display {
+  display: inline
+}
+
+.stylizedText {
+  padding-top: 10%;
+  padding-left: 5%;
+  font-family: 'Alegreya', serif;
+  font-size: 200%;
+}
+
+.thumbnail {
+  background-color: #6B0F0F;
+  border: 1px solid #585050; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 100px; /* Set a small width */
+  height: 100px
+}

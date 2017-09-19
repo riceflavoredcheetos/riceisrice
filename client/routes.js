@@ -20,7 +20,8 @@ import {
   AdminHome,
   UserOrders,
   AdminAllOrders,
-  AllProducts
+  AllProducts,
+  AllUsers
 } from "./components";
 
 import { me } from "./store";
@@ -64,6 +65,7 @@ class Routes extends Component {
                 <Route path="/orders" component={UserOrders} />
                 <Route path="/adminhome" component={AdminHome} />
                 <Route path="/home" component={UserHome} />
+                <Route path="/users" component={AllUsers} />
               </Switch>
             )}
 
