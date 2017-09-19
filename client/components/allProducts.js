@@ -52,7 +52,6 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getProduct: function() {
-      console.log("GETTing Product")
       const action = getAllProducts();
       dispatch(action);
     }

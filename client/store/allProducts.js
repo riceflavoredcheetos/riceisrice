@@ -1,39 +1,38 @@
-import axios from 'axios'
+import axios from "axios";
 
 /**
  * ACTION TYPES
  */
 
-export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_PRODUCTS = "GET_PRODUCTS";
 
 /**
  * ACTION CREATORS
  */
 
- export const getProducts = product => ({type: GET_PRODUCTS, product})
+export const getProducts = products => ({ type: GET_PRODUCTS, products });
 
- /**
+/**
  * THUNK CREATORS
  */
 
- export const getAllProducts = () =>
-    dispatch =>
-      axios.get('/api/products')
-        .then( res =>{
-
-          console.log("getting all products")
-          dispatch(getProducts(res.data))})
-        .catch(err => console.log(err))
+export const getAllProducts = () => dispatch =>
+  axios
+    .get("/api/products")
+    .then(res => {
+      dispatch(getProducts(res.data));
+    })
+    .catch(err => console.log(err));
 
 /**
  * REDUCER
  */
 
- export default function (state = [], action) {
-   switch (action.type) {
-     case GET_PRODUCTS:
-        return action.product
-     default:
-        return state
-   }
- }
+export default function(state = [], action) {
+  switch (action.type) {
+    case GET_PRODUCTS:
+      return action.products;
+    default:
+      return state;
+  }
+}
