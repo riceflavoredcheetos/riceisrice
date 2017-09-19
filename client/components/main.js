@@ -11,23 +11,34 @@ import Product from "./allProducts";
  *  else common to our entire app. The 'picture' inside the frame is the space
  *  rendered out by the component's `children`.
  */
+
+
 const Main = props => {
   const { children, handleClick, isLoggedIn } = props;
-  console.log("MAIN");
+
 
   return (
     <div>
       <div className="jumbotron full-width">
-        <h1>Got Rice?</h1>
+        <h1 style={{'textShadow':' #2c2c2c 3px 3px 5px'}}>Got Rice?</h1>
       </div>
       <div id="intro">
         <div className="content">
-          <h3 className="centerText">Shop the new Grains</h3>
+          <h1 className="centerText" style = {{
+          'fontFamily': 'Helvetica, sansSerif',
+          'fontWeight': 'bold',
+          'textAlign': 'center',}}>Shop the new Grains</h1>
+          <hr></hr>
         </div>
       </div>
 
-      <div className="row content" id="feature">
-        <h3 className="centerText">PRODUCT OF THE WEEK</h3>
+      <div className="row content" id="feature" >
+        <h3 className="centerText" style={{   'fontSize': '100px',
+          'lineHeight':' 160px',
+          'fontFamily': 'Helvetica, sansSerif',
+          'fontWeight': 'bold',
+          'textAlign': 'center',
+          'textShadow': 'rgba(0, 0, 0, .3) 5px 5px 5px'}} >PRODUCT OF THE WEEK</h3>
       </div>
       <Product />
     </div>
