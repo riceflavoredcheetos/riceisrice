@@ -14,24 +14,29 @@ const users = [
     name: 'Luke Rice',
     email: "luke@riceisrice.com",
     password: "luke777",
-    isAdmin: true
+    isAdmin: true,
+    googleId: null
   },
   {
     name: 'Denis Rice',
     email: "denis@riceisrice.com",
     password: "denis777",
-    isAdmin: true
+    isAdmin: true,
+    googleId: null
   },
   {
     name: 'Anuj Rice',
     email: "anuj@riceisrice.com",
     password: "anuj777",
+    googleId: null
     isAdmin: true,
+
   },
   {
     name: 'Jordan Rice',
     email: "jordan@riceisrice.com",
     password: "jordan777",
+    googleId: null
     isAdmin: true,
   },
   {
