@@ -54,7 +54,8 @@ class Review extends React.Component {
     this.setState({newReview: event.target.value})
   }
 
-  passingReviewToProps = () => {
+  passingReviewToProps = (event) => {
+    event.preventDefault()
     const productId = this.props.match.params.productId;
     const newReview = this.state.newReview;
     this.setState({addingReview: false, newReview: ''})
@@ -92,9 +93,9 @@ class Review extends React.Component {
             ?
             <button type="button" className="btn btn-info" onClick={this.addReview}>Add More Review For This Product</button>
             :
-            <form>
+            <form onSubmit={this.passingReviewToProps}>
               <input type="text" className="form-control" placeholder="Add Your Review Here" onChange={this.addingReview}/>
-              <button type="button" className="btn btn-success" onClick={this.passingReviewToProps}>Submit</button>
+              <button type="submit" className="btn btn-success">Submit</button>
             </form>
           }
       </div>

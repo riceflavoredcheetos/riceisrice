@@ -46,6 +46,7 @@ class Cart extends React.Component {
       }
     ))
     submitObject.products = order
+    // console.log('my cart ', submitObject)
     this.props.submitOrder(submitObject)
   }
 

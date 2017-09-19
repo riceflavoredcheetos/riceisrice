@@ -19,7 +19,7 @@ import axios from 'axios'
  export const getItem = () =>
     dispatch =>
       axios.get(`/auth/me/cart`)
-        .then( res => {
+        .then( () => {
           dispatch(getCart(res.data))})
         .catch(err => console.log(err))
 
@@ -27,8 +27,9 @@ import axios from 'axios'
     dispatch => 
       axios.post(`/api/invoice`, order)
           .then(res => req.session.cart = [])
-          .then(() => res.sendStatus(201))
+          .then(() => console.log('new cart ', req.session.cart))
           .catch(err => console.log(err))
+
 /**
  * REDUCER
  */
