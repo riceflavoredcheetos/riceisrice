@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllUsers } from "../store/allUsers";
@@ -10,11 +11,73 @@ let style = {
 
 
 
+
 export class AllUsers extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      tempName:'',
+      tempEmail:'',
+      tempPassword:'',
+      tempAdmin:false,
+    }
+    this.handleName= this.handleName.bind(this)
+    this.handleEmail= this.handleEmail.bind(this)
+    this.handlePassword=this.handlePassword.bind(this)
+    this.handleAdminStatus=this.handleAdminStatus.bind(this)
+    this.submitting= this.submitting.bind(this)
+  }
 
   componentDidMount(){
     this.props.loadUsers();
   }
+
+  handleName(event){
+    this.setState({
+      tempName: event.target.value
+    })
+  }
+
+  handleEmail(event){
+    this.setState({
+      tempEmail: event.target.value
+    })
+  }
+
+  handlePassword(event){
+    this.setState({
+      tempPassword: event.target.value
+    })
+  }
+
+  handleAdminStatus(event){
+    this.setState({
+      tempAdmin: event.target.value
+    })
+  }
+
+  submitting = (person) => {
+    return () => {
+      person.edit=false;
+       axios.put(`/api/user/${[person.id]}`, {
+          name:this.state.tempName,
+          email: this.state.tempEmail,
+          password: this.state.tempPassword,
+          admin: this.state.tempAdmin,
+       })
+      .then(()=>{
+        this.setState({
+        tempName: '',
+        tempAdmin: '',
+        tempPassword: '',
+        tempAdmin: false
+      })
+      console.log("Submitting Person:", person)
+    })
+
+  }}
+
 
     render() {
       const people = this.props.AllUsers
@@ -51,34 +114,34 @@ export class AllUsers extends React.Component {
               {
                people.map( person => {
                 return (
-               <tr key={person.id} onClick = {triggered(person)}>
+               <tr key={person.id} onClick = {triggered(person)} >
                   <td>{person.id}</td>
                   <td>{person.edit? <input
                     className="form-control"
                     type="text"
                     name="name"
-                    defaultValue={person.name}
-                    placeholder={person.name}
+
+                    placeholder={person.name} onChange ={this.handleName}
                   />:person.name}</td>
                   <td>{person.edit?<input
                     className="form-control"
                     type="text"
                     name="email"
-                    defaultValue={person.email}
+
                     placeholder={person.email}
                   />:person.email}</td>
                   <td>{person.edit?<input
                     className="form-control"
                     type="text"
                     name="password"
-                    defaultValue={person.password}
+
                     placeholder={person.password}
                   />:person.password}</td>
                   <td>{person.edit?<select>
                     <option value={true}>True</option>
                     <option value={false}>False</option>
                   </select>:person.isAdmin.toString()}</td>
-                  <td>{person.edit?<span><a href="#" className="btn btn-info">Submit</a>
+                  <td>{person.edit?<span><a href="#" className="btn btn-info" type="submit" onClick={this.submitting(person)} >Submit</a>
                   <a href="#" className="btn btn-danger">Remove</a></span>:''}</td>
                </tr>
                 )
@@ -102,7 +165,7 @@ const mapDispatch = (dispatch) => {
     return {
       loadUsers: () => {
         dispatch(getAllUsers())
-      }
+      },
     }
 }
 

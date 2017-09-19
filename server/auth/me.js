@@ -29,20 +29,20 @@ router.put('/', (req, res, next) => {
 
 
 
-router.post('/cart', (req, res, next) => {
-    console.log("Req.session info:", req.session)
-    let newCart = req.session.cart
-            if(newCart.length>0){
-                newCart.push(req.body)
-                req.session.cart = newCart
-                console.log("pushed", req.session)
-            }
-            else {
-                newCart = [req.body]
-                req.session.cart = newCart
-                console.log("added", req.session)
-            }
-})
+// router.post('/cart', (req, res, next) => {
+//     console.log("Req.session info:", req.session)
+//     let newCart = req.session.cart
+//             if(newCart.length>0){
+//                 newCart.push(req.body)
+//                 req.session.cart = newCart
+//                 console.log("pushed", req.session)
+//             }
+//             else {
+//                 newCart = [req.body]
+//                 req.session.cart = newCart
+//                 console.log("added", req.session)
+//             }
+// })
 
 //GET: current cart for user (logged in and guest)
 router.get('/cart', (req, res, next) => {
@@ -54,7 +54,7 @@ router.get('/cart', (req, res, next) => {
 router.post('/cart', (req, res, next) => {
     req.session.cart = req.session.cart||[]
     req.session.cart.push(req.body)
-    console.log('session current ', res.session.cart)
+    console.log('session current ', req.session)
     res.json({})
 })
 

@@ -22,6 +22,21 @@ router.get("/:userId", (req, res, next) => {
     .catch(next);
 });
 
+router.put("/:userId", (req, res, next) => {
+  return User.update({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    isAdmin: req.body.admin
+  },{
+    where: {
+      id:req.params.userId
+    }
+  })
+  .then((updatedInfo) => res.status(200).json)
+  (updatedInfo.end())
+  .catch(next);
+})
 
 //create new user
 router.post("/", (req, res, next) => {

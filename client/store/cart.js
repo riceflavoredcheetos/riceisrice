@@ -19,12 +19,12 @@ import axios from 'axios'
  export const getItem = () =>
     dispatch =>
       axios.get(`/auth/me/cart`)
-        .then( () => {
+        .then( (res) => {
           dispatch(getCart(res.data))})
         .catch(err => console.log(err))
 
- export const submitOrder = (order) => 
-    dispatch => 
+ export const submitOrder = (order) =>
+    dispatch =>
       axios.post(`/api/invoice`, order)
           .then(res => req.session.cart = [])
           .then(() => console.log('new cart ', req.session.cart))
