@@ -5,24 +5,34 @@ import axios from 'axios'
  */
 
  export const GET_CART_ITEMS = 'GET_CART_ITEMS'
+ export const ADD_TO_CART = 'ADD_TO_CART'
 
 /**
  * ACTION CREATORS
  */
 
  export const getCart = items => ({type: GET_CART_ITEMS, items})
+ export const addCart = item => ({type: ADD_TO_CART, item})
 
  /**
  * THUNK CREATORS
  */
 
- export const getItem = () =>
+ export const getItems = () =>
     dispatch =>
       axios.get(`/auth/me/cart`)
-        .then( () => {
+        .then(res => {
           dispatch(getCart(res.data))})
         .catch(err => console.log(err))
-
+ 
+ export const addToCart = (product) => 
+    dispatch => 
+       axios.post(`/auth/me/cart`, product)
+        .then(res => {
+          dispatch(addCart(res.data))})
+        .catch(err => console.log(err))
+          
+ 
  export const submitOrder = (order) => 
     dispatch => 
       axios.post(`/api/invoice`, order)
@@ -37,7 +47,9 @@ import axios from 'axios'
  export default function (items = [], action) {
    switch (action.type) {
      case GET_CART_ITEMS:
-      return action.items
+        return action.items
+     case ADD_TO_CART:
+        return [...items, action.item]
      default:
         return items
    }

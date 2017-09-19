@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getAllProducts } from "../store/allProducts";
+import history from '../history'
 
 class Product extends React.Component {
-
-
 
   componentDidMount() {
     this.props.getProduct();
@@ -25,7 +24,7 @@ class Product extends React.Component {
     return (
       <section>
         <img className="featuredImage" src={Rice.image}/>
-        <div className="featuredImage display stylizedText">
+        <div className="featuredImage display stylizedText" onClick={() => history.push(`/product/${Rice.id}`)}>
           <p><strong>Product Name:</strong> {Rice.title}</p>
           <p><strong>Price:</strong> {Rice.price}</p>
         </div>

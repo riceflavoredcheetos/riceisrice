@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {getItem, submitOrder} from '../store'
+import {getItems, submitOrder} from '../store'
 
 class Cart extends React.Component {
 
@@ -46,16 +46,20 @@ class Cart extends React.Component {
       }
     ))
     submitObject.products = order
-    // console.log('my cart ', submitObject)
+    console.log('my cart ', submitObject)
     this.props.submitOrder(submitObject)
   }
 
   render() {
     const items = this.props.items
+    items.forEach(item => {
+      item.subTotal = item.product.price * item.quantity
+    })
+    console.log('current items ', items)
       return (
         <div>
         {
-          items.length > 0
+          items.length > 1
           ?
           <div>
             <h1>Cart Page</h1>
@@ -74,15 +78,17 @@ class Cart extends React.Component {
                   <tbody>
                   {items.map((item, index) => (
                     <tr key={index}>
-                      <th>{item.title}</th>
-                      <th><img className="thumbnail" src={item.image}/></th>
-                      <th>{item.price}</th>
-                      <th>1</th>
-                      <th>calculate</th>
+                      <th>{item.product.title}</th>
+                      <th><img className="thumbnail" src={item.product.image}/></th>
+                      <th>{item.product.price}</th>
+                      <th>{item.quantity}</th>
+                      <th>{item.subTotal}</th>
                     </tr>
                   ))}
                   </tbody>
+                  
               </table>
+              <tbody className="table table-bordered"><tr>New Row</tr></tbody>
               {!this.state.checkout 
               ? <button className="btn btn-success" onClick={this.checkingOut}>Checkout</button>
               : 
@@ -108,7 +114,6 @@ class Cart extends React.Component {
  */
 
  const mapState = (state) => {
-   console.log('state ', state)
       return {
         items: state.cart,
         userId: state.currentUser ? state.currentUser.id : null
@@ -118,7 +123,7 @@ class Cart extends React.Component {
  const mapDispatch = (dispatch) =>{
       return {
         getCart: () => {
-          dispatch(getItem())
+          dispatch(getItems())
         },
         submitOrder: (order) => {
           dispatch(submitOrder(order))
