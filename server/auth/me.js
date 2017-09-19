@@ -10,24 +10,16 @@ router.get('/', (req, res, next) => {
 //find user
 router.put('/', (req, res, next) => {
     const { email, password } = req.body;
-    console.log('me', req.body);
 
     User.findOne({
         where: { email, password }
     })
     .then(user => {
         if (user) {
-
             req.login(user, err => {
                 if (err) return next(err)
                 res.json(user)
             })
-
-            req.session.userId = user.id;
-            req.session.isAdmin = user.isAdmin;
-            res.status(200).json(user);
-
-
         } else {
             res.send('Invalid login, please try again.').status(401);
         }

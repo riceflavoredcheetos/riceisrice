@@ -40,6 +40,7 @@ class Routes extends Component {
       position: "fixed"
     };
     console.log("routes isLoggedIn", this.props.isLoggedIn);
+    
     return (
       <Router history={history}>
         <div>

@@ -16,7 +16,7 @@ class Product extends React.Component {
     let rand = Math.floor(Math.random()*(rice.length))
 
     let Rice = rice[rand]
-    console.log('my rice ', Rice)
+    // console.log('my rice ', Rice)
     if (rice.length < 1){
       return (
       <div></div>
