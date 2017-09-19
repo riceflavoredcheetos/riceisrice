@@ -10,11 +10,14 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
  * ACTION CREATORS
  */
 
+
 export const getProducts = products => ({ type: GET_PRODUCTS, products });
+
 
 /**
  * THUNK CREATORS
  */
+
 
 export const getAllProducts = () => dispatch =>
   axios
@@ -24,9 +27,11 @@ export const getAllProducts = () => dispatch =>
     })
     .catch(err => console.log(err));
 
+
 /**
  * REDUCER
  */
+
 
 export default function(state = [], action) {
   switch (action.type) {

@@ -35,6 +35,7 @@ export class AccountPage extends React.Component {
 
 const mapState = state => {
     return state
+    //change to state.currentuser EXAMPLE
 }
 
 export default connect(mapState, null)(AccountPage)

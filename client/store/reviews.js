@@ -4,6 +4,7 @@ import axios from 'axios'
  * ACTION TYPES
  */
 
+ export const ADD = 'ADD_REVIEWS'
  export const GET = 'GET_REVIEWS'
  export const DELETE = 'DELETE_REVIEW'
  export const UPDATE = 'UPDATE_REVIEW'
@@ -12,6 +13,7 @@ import axios from 'axios'
  * ACTION CREATORS
  */
 
+ export const addReview = review => ({type: ADD, review})
  export const getReview = reviews => ({type: GET, reviews})
  export const removeReview = reviewId => ({type: DELETE, reviewId})
  export const updateReview = review => ({type: UPDATE, review})
@@ -20,7 +22,13 @@ import axios from 'axios'
  * THUNK CREATORS
  */
 
-export const getReviewThunk = (productId) =>
+ export const addReviewThunk = review => 
+    dispatch =>
+      axios.post(`/api/reviews/`, review)
+        .then(res => dispatch(addReview(res.data)))
+        .catch(err => console.log(err))
+
+ export const getReviewThunk = (productId) =>
     dispatch =>
       axios.get(`/api/reviews/${productId}`)
         .then( res => {
@@ -35,9 +43,9 @@ export const getReviewThunk = (productId) =>
       )
 
  export const removeThunk = (reviewId) => dispatch => {
-  dispatch(removeReview(reviewId))
-  axios.delete(`/api/reviews/${reviewId}`)
-    .catch(err => console.log(err))
+      dispatch(removeReview(reviewId))
+      axios.delete(`/api/reviews/${reviewId}`)
+        .catch(err => console.log(err))
  }
 
 /**
@@ -46,6 +54,8 @@ export const getReviewThunk = (productId) =>
 
  export default function (reviews = [], action) {
    switch (action.type) {
+     case ADD:
+      return [...reviews, action.review]
      case GET: 
         return action.reviews
      case UPDATE:
