@@ -11,23 +11,58 @@ const {
 
 const users = [
   {
+    name: 'Luke Rice',
     email: "luke@riceisrice.com",
     password: "luke777",
-    isAdmin: true
+    isAdmin: true,
+    googleId: null
   },
   {
+    name: 'Denis Rice',
     email: "denis@riceisrice.com",
     password: "denis777",
-    isAdmin: true
+    isAdmin: true,
+    googleId: null
   },
   {
+    name: 'Anuj Rice',
     email: "anuj@riceisrice.com",
-    password: "anuj777"
+    password: "anuj777",
+    googleId: null,
+    isAdmin: true,
+
   },
   {
+    name: 'Jordan Rice',
     email: "jordan@riceisrice.com",
-    password: "jordan777"
-  }
+    password: "jordan777",
+    googleId: null,
+    isAdmin: true,
+  },
+  {
+    name: 'Ray Rice',
+    email: "RR@riceisrice.com",
+    password: "ray777",
+    isAdmin: false,
+  },
+  {
+    name: 'Peter Griffin',
+    email: "PeatearGryfon@riceisrice.com",
+    password: "peatear",
+    isAdmin: false,
+  },
+  {
+    name: 'Kim Jun Un',
+    email: "rulernumberone@yahoo.com",
+    password: "iloveusa",
+    isAdmin: false,
+  },
+  {
+    name: 'Donald Trump',
+    email: "XxnycgansterXx@google.com",
+    password: "ivanka",
+    isAdmin: false,
+  },
 ];
 
 const products = [
@@ -231,9 +266,7 @@ const seed = async () =>
   Promise.all(users.map(user => User.create(user)))
     .then(() => Promise.all(products.map(product => Product.create(product))))
     .then(() => Promise.all(reviews.map(review => Review.create(review))))
-    .then(() =>
-      Promise.all(categories.map(category => Category.create(category)))
-    )
+    .then(() => Promise.all(categories.map(category => Category.create(category))))
     .then(() => Promise.all(productTypes.map(type => productType.create(type))))
     .then(() => Promise.all(invoices.map(invoice => Invoice.create(invoice))))
     .then(() => Promise.all(orders.map(order => Order.create(order))))

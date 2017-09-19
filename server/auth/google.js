@@ -18,31 +18,46 @@ module.exports = router
  * process.env.GOOGLE_CALLBACK = '/your/google/callback'
  */
 
+
+//Google authentication and login
+router.get('/', passport.authenticate('google', {scope: 'email'}))
+
+//handle the callback after Google has authenticated the user
+router.get('/verify', 
+  passport.authenticate('google', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+}))
+
+
 const googleConfig = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.GOOGLE_CALLBACK
 }
 
-const strategy = new GoogleStrategy(googleConfig, (token, refreshToken, profile, done) => {
-  const googleId = profile.id
-  const name = profile.displayName
-  const email = profile.emails[0].value
 
-  User.find({where: {googleId}})
-    .then(user => user
-      ? done(null, user)
-      : User.create({name, email, googleId})
-        .then(user => done(null, user))
-    )
-    .catch(done)
+const strategy = new GoogleStrategy(googleConfig, 
+  (token, refreshToken, profile, done) => {
+    const googleId = profile.id
+    const name = profile.displayName
+    const email = profile.emails[0].value
+
+    User.find({where: {googleId}})
+      .then(user => user
+        ? done(null, user)
+        : User.create({name, email, googleId})
+          .then(user => done(null, user))
+      ) 
+      .catch(done)
 })
+
+
 
 passport.use(strategy)
 
-router.get('/', passport.authenticate('google', {scope: 'email'}))
 
-router.get('/callback', passport.authenticate('google', {
-  successRedirect: '/home',
-  failureRedirect: '/login'
-}))
+
+
+
+

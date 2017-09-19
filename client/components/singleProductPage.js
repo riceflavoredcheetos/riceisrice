@@ -104,8 +104,6 @@ class SingleProduct extends React.Component {
     const categories = this.state.categories;
     const selectedCategories = this.state.selectedCategories;
 
-    console.log(this.props);
-
     return (
       <div className="row">
         <div className="col-md-8">

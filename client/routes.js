@@ -17,7 +17,11 @@ import {
   Cart,
   Checkout,
   About,
-  AccountPage
+  AdminHome,
+  UserOrders,
+  AdminAllOrders,
+  AllProducts,
+  AllUsers
 } from "./components";
 
 import { me } from "./store";
@@ -35,7 +39,7 @@ class Routes extends Component {
     const fixed = {
       position: "fixed"
     };
-    console.log("routes isLoggedIn", this.props.isLoggedIn);
+
     return (
       <Router history={history}>
         <div>
@@ -56,16 +60,12 @@ class Routes extends Component {
             {isLoggedIn && (
               <Switch>
                 {/* Routes placed here are only available after logging in */}
+                <Route path="/admin_orders" component={AdminAllOrders} />
+                <Route path="/admin_allproducts" component={Products} />
+                <Route path="/orders" component={UserOrders} />
+                <Route path="/adminhome" component={AdminHome} />
                 <Route path="/home" component={UserHome} />
-                <Route path="/accountpage" component={AccountPage} />
-                <Route exact path="/" component={Main} />
-                <Route path="/loginpage" component={LoginPage} />
-                <Route path="/signup" component={Signup} />
-                <Route exact path="/product" component={Products} />
-                <Route path="/product/:productId" component={SingleProduct} />
-                <Route exact path="/cart" component={Cart} />
-                <Route path="/cart/checkout" component={Checkout} />
-                <Route path="/about" component={About} />
+                <Route path="/users" component={AllUsers} />
               </Switch>
             )}
 
@@ -87,7 +87,7 @@ const mapState = state => {
 
     //causing a
     isLoggedIn:
-      state.CurrentUser !== null && state.CurrentUser.id !== undefined
+      state.currentUser !== null && state.currentUser.id !== undefined
         ? true
         : false
   };

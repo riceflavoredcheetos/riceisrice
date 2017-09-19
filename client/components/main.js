@@ -15,48 +15,20 @@ const Main = props => {
   const { children, handleClick, isLoggedIn } = props;
   console.log("MAIN");
 
-  const style = {
-    backgroundImage:
-      "url(https://cdn.theconversation.com/files/90353/wide_article/width1356x668/dydjpgbz-1438275949.jpg)",
-    backgroundSize: "cover",
-    height: "500px"
-  };
-
-  const Center = {
-    textAlign: "center"
-  };
-
-  const Font = {
-    position: "absolute",
-    display: "table-cell",
-    width: "100%",
-    height: "100%",
-    textAlign: "center",
-    verticalAlign: "center",
-    fontFamily: "Open Sans",
-    color: "#fff",
-    marginTop: "15%"
-  };
-
-  const fixed = {
-    position: "fixed"
-  };
-
   return (
     <div>
-      <div className="jumbotron full-width" style={style}>
-        <h1 style={Font}>Got Rice?</h1>
+      <div className="jumbotron full-width">
+        <h1>Got Rice?</h1>
       </div>
       <div id="intro">
         <div className="content">
-          <h3 style={Center}>Shop the new Grains</h3>
+          <h3 className="centerText">Shop the new Grains</h3>
         </div>
       </div>
 
       <div className="row content" id="feature">
-        <h3 style={Center}>PRODUCT OF THE WEEK</h3>
+        <h3 className="centerText">PRODUCT OF THE WEEK</h3>
       </div>
-      <hr style={{ height: "20px" }} />
       <Product />
     </div>
   );

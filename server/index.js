@@ -10,6 +10,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const User = require('./db/models/user')
 module.exports = app
 
 /**
@@ -24,8 +25,9 @@ if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
+
 passport.deserializeUser((id, done) =>
-  db.models.user.findById(id)
+  User.findById(id)
     .then(user => done(null, user))
     .catch(done))
 
@@ -44,22 +46,24 @@ const createApp = () => {
     resave: false,
     saveUninitialized: false
   }))
+
   app.use(passport.initialize())
   app.use(passport.session())
 
 
   //session counter
   app.use('/api', (req, res, next) => {
+    console.log('passport user', req.user)
     if(!req.session.counter) req.session.counter = 0;
     console.log('counter', ++req.session.counter);
     next();
   })
 
-  //session logger 
-  app.use(function (req, res, next) {
-    console.log('session', req.session);
-    next();
-  });
+  //session logger
+  // app.use(function (req, res, next) {
+  //   console.log('session', req.session);
+  //   next();
+  // });
 
   // auth and api routes
   app.use('/auth', require('./auth'))

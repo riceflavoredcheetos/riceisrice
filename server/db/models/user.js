@@ -2,17 +2,18 @@ const Sequelize = require("sequelize");
 const db = require("../db");
 
 const User = db.define("user", {
+  name: {
+    type: Sequelize.STRING,
+    // unique: true,
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
-    validate: {
-      isEmail: true
-    }
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    // allowNull: false
   },
   isGuest: {
     type: Sequelize.BOOLEAN,
@@ -23,6 +24,10 @@ const User = db.define("user", {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false
+  },
+  googleId: {
+    type: Sequelize.STRING,
+    defaultValue: null
   }
 });
 
