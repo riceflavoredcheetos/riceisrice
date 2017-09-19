@@ -28,7 +28,7 @@ const users = [
     name: 'Anuj Rice',
     email: "anuj@riceisrice.com",
     password: "anuj777",
-    googleId: null
+    googleId: null,
     isAdmin: true,
 
   },
@@ -36,7 +36,7 @@ const users = [
     name: 'Jordan Rice',
     email: "jordan@riceisrice.com",
     password: "jordan777",
-    googleId: null
+    googleId: null,
     isAdmin: true,
   },
   {

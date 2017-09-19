@@ -10,6 +10,7 @@ router.get('/', (req, res, next) => {
 //find user
 router.put('/', (req, res, next) => {
     const { email, password } = req.body;
+    console.log('me', req.body);
 
     User.findOne({
         where: { email, password }
