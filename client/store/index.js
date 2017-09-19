@@ -9,10 +9,11 @@ import currentUser from './currentUser'
 import Reviews from './reviews'
 import SearchBar from './searchBar'
 import AllUsers from './allUsers'
+import invoices from './invoices'
 
 //ADD REDUCERS HERE
 
-const reducer = combineReducers({user, AllProducts, currentUser, SingleProduct, Reviews, AllUsers, cart})
+const reducer = combineReducers({invoices, user, AllProducts, currentUser, SingleProduct, Reviews, AllUsers, cart})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware)
 
