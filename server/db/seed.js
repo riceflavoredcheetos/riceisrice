@@ -268,9 +268,7 @@ const seed = async () =>
   Promise.all(users.map(user => User.create(user)))
     .then(() => Promise.all(products.map(product => Product.create(product))))
     .then(() => Promise.all(reviews.map(review => Review.create(review))))
-    .then(() =>
-      Promise.all(categories.map(category => Category.create(category)))
-    )
+    .then(() => Promise.all(categories.map(category => Category.create(category))))
     .then(() => Promise.all(productTypes.map(type => productType.create(type))))
     .then(() => Promise.all(invoices.map(invoice => Invoice.create(invoice))))
     .then(() => Promise.all(orders.map(order => Order.create(order))))
