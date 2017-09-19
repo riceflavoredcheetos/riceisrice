@@ -9,8 +9,6 @@ router.get('/', (req, res, next) => {
         .catch(next)
 })
 
-
-
 //find user
 router.put('/', (req, res, next) => {
     const { email, password } = req.body;
@@ -20,7 +18,6 @@ router.put('/', (req, res, next) => {
     })
     .then(user => {
         if (user) {
-            console.log("PUT")
             req.session.userId = user.id;
             req.session.isAdmin = user.isAdmin;
             res.status(200).json(user);
@@ -32,20 +29,18 @@ router.put('/', (req, res, next) => {
     .catch(next);
 })
 
-// STILL DOES NOT PROPERLY ADD TO SESSIONS
-
-router.post('/cart', (req, res, next) => {
-    console.log("Sessions:", req.session,)
-
-    req.session.cart = req.session.cart||[]
-    console.log("after req.session.cart", req.session.cart)
-    req.session.cart.push(req.body)
-    console.log("after req.session.cart after pushing", req.session.cart)
-     //req.session.cart = [...newCart , req.body]
-    //  return Object.assign([], newCart, req.body)
-    res.json({})
+//GET: current cart for user (logged in and guest)
+router.get('/cart', (req, res, next) => {
+    res.json(req.session.cart)
 })
 
+//POST: request to add items to cart
+router.post('/cart', (req, res, next) => {
+    req.session.cart = req.session.cart||[]
+    req.session.cart.push(req.body)
+    console.log('session current ', res.session.cart)
+    res.json({})
+})
 
 //create user
 router.post('/signup', (req, res, next) => {

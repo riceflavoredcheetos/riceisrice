@@ -66,3 +66,12 @@ body {
   font-family: 'Alegreya', serif;
   font-size: 200%;
 }
+
+.thumbnail {
+  background-color: #6B0F0F;
+  border: 1px solid #585050; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 100px; /* Set a small width */
+  height: 100px
+}
