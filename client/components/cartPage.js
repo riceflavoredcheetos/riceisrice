@@ -126,3 +126,4 @@ class Cart extends React.Component {
  }
 
  export default withRouter(connect(mapState, mapDispatch)(Cart))
+
