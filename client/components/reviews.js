@@ -47,7 +47,7 @@
 //   }
 
 //   render() {
-//     let title = 'REVIEWS';
+
 
 //   addReview = () => {
 //     this.setState({addingReview: !this.state.addingReview})
@@ -65,7 +65,7 @@
 //     this.props.addReview(productId, newReview)
 //   }
 
-//   render(){
+
 //     const reviews = this.props.reviews;
 //     const editing = this.state.editing;
 //     const newReview = this.state.newReview;
@@ -104,7 +104,7 @@
 //           }
 //       </div>
 //         )
-//       }
+
 //   }
 // }
 
