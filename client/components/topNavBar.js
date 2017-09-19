@@ -50,7 +50,7 @@ export class TopNavBar extends React.Component {
               <li>
                 <Link to="/cart">Cart</Link>
               </li>
-              { this.props.currentUser ? (this.renderLogout()) : (this.renderLoginSignup()) }
+              { this.props.currentUser.id ? (this.renderLogout()) : (this.renderLoginSignup()) }
             </ul>
           </div>
         </div>
@@ -109,9 +109,6 @@ const mapState = state => {
 const mapDispatch = dispatch => ({
   logout: () => {
     dispatch(logoutUser());
-  },
-  linkToAccount: () => {
-    return history.push("/accountpage");
   }
 });
 
