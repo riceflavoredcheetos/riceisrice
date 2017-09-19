@@ -22,8 +22,7 @@ export class LoginPage extends React.Component {
                     </label>
                         <button type="submit" name="Login"/>Login
                 </form>
-
-                        <Link to='/signup'>Signup</Link>
+                        <a href='/auth/google'>Log in with Google</a> 
             </div>
         )
     }
@@ -45,9 +44,5 @@ const mapDispatch = dispatch => {
         reactLogin: credentials => dispatch(login(credentials)),
     }
 }
-
-// const mapState = state => {
-//     return state;
-// }
 
 export default connect(null, mapDispatch)(LoginPage)

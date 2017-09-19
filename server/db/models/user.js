@@ -17,7 +17,7 @@ const User = db.define("user", {
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    // allowNull: false
   },
   isGuest: {
     type: Sequelize.BOOLEAN,
@@ -28,6 +28,11 @@ const User = db.define("user", {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false
+  },
+  googleId: {
+    type: Sequelize.STRING,
+    defaultValue: null
+
   }
 });
 
