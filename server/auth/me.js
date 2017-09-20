@@ -64,6 +64,25 @@ router.post('/cart', (req, res, next) => {
     res.json(req.body)
 })
 
+//PUT request to update cart quantity
+router.put('/cart/:productId', (req, res, next) => {
+    const productId = +req.params.productId
+    req.session.cart.forEach(item => {
+        item.product.id === productId ? item.quantity = req.body.newQuantity : null
+    })
+    res.json(req.session.cart)
+})
+
+
+//DELETE: item from cart
+router.delete('/cart/:productId', (req, res, next) => {
+    const productId = +req.params.productId
+    req.session.cart.forEach((item, index) => {
+        item.product.id === productId ? req.session.cart.splice(index, 1) : null
+    })
+    res.json(req.session.cart)
+})
+
 //create user
 router.post('/signup', (req, res, next) => {
     const { email, password } = req.body;

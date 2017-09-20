@@ -53,7 +53,6 @@ class SingleProduct extends React.Component{
  */
 
 const mapState = (state) => {
-  console.log('here is state ', state)
   return {
     singleProduct: state.SingleProduct,
     cartItems: state.cart

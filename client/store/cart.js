@@ -13,6 +13,7 @@ import axios from 'axios'
 
  export const getCart = items => ({type: GET_CART_ITEMS, items})
  export const addCart = item => ({type: ADD_TO_CART, item})
+ 
 
  /**
  * THUNK CREATORS
@@ -31,7 +32,20 @@ import axios from 'axios'
         .then(res => {
           dispatch(addCart(res.data))})
         .catch(err => console.log(err))
-          
+
+ export const updatingQuantity = (productId, newQuantity) => 
+    dispatch => 
+          axios.put(`/auth/me/cart/${productId}`, {newQuantity})
+              .then(res => {
+                dispatch(getCart(res.data))})
+              .catch(err => console.log(err))  
+
+ export const deleteFromCart = productId => 
+        dispatch => 
+            axios.delete(`/auth/me/cart/${productId}`)
+              .then(res => {
+                dispatch(getCart(res.data))})
+              .catch(err => console.log(err))
  
  export const submitOrder = (order) => 
     dispatch => 

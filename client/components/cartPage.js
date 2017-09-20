@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {getItems, submitOrder} from '../store'
+import {getItems, submitOrder, deleteFromCart, updatingQuantity} from '../store'
 
 class Cart extends React.Component {
 
@@ -46,7 +46,6 @@ class Cart extends React.Component {
       }
     ))
     submitObject.products = order
-    console.log('my cart ', submitObject)
     this.props.submitOrder(submitObject)
   }
 
@@ -55,16 +54,15 @@ class Cart extends React.Component {
     items.forEach(item => {
       item.subTotal = item.product.price * item.quantity
     })
-    console.log('current items ', items)
+    const total = items.reduce((prev, item) => prev + item.subTotal, 0)
       return (
         <div>
         {
-          items.length > 1
+          items.length > 0
           ?
           <div>
             <h1>Cart Page</h1>
             <h3>These are the items in your cart:</h3>
-            
               <table className="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -73,6 +71,7 @@ class Cart extends React.Component {
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Sub-Total</th>
+                    <th>Remove from cart</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -81,14 +80,19 @@ class Cart extends React.Component {
                       <th>{item.product.title}</th>
                       <th><img className="thumbnail" src={item.product.image}/></th>
                       <th>{item.product.price}</th>
-                      <th>{item.quantity}</th>
+                      <th><select defaultValue={item.quantity} onChange={event => this.props.updateQuantity(item.product.id, +event.target.value)}>{
+                        looping(item.quantity).map(num => (
+                          <option key={num}>{num}</option>
+                        ))
+                        }</select></th>
                       <th>{item.subTotal}</th>
+                      <th><button className="btn btn-danger" onClick={() => this.props.removeItem(item.product.id)}>x</button></th>
                     </tr>
                   ))}
                   </tbody>
                   
               </table>
-              <tbody className="table table-bordered"><tr>New Row</tr></tbody>
+              <h2>Your total: ${total}</h2>
               {!this.state.checkout 
               ? <button className="btn btn-success" onClick={this.checkingOut}>Checkout</button>
               : 
@@ -127,9 +131,22 @@ class Cart extends React.Component {
         },
         submitOrder: (order) => {
           dispatch(submitOrder(order))
+        },
+        removeItem: (productId) => {
+          dispatch(deleteFromCart(productId))
+        },
+        updateQuantity: (productId, newQuantity) => {
+          dispatch(updatingQuantity(productId, newQuantity))
         }
       }
  }
 
  export default withRouter(connect(mapState, mapDispatch)(Cart))
 
+function looping(num) {
+  var min = Math.max(num-5, 1), max = num+5, arr = [];
+  for (var i = min; i <= max; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
