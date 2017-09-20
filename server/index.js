@@ -59,11 +59,11 @@ const createApp = () => {
     next();
   })
 
-  //session logger 
-  app.use(function (req, res, next) {
-    console.log('session', req.session);
-    next();
-  });
+  //session logger
+  // app.use(function (req, res, next) {
+  //   console.log('session', req.session);
+  //   next();
+  // });
 
   // auth and api routes
   app.use('/auth', require('./auth'))
