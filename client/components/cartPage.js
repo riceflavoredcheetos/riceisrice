@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import {getItem, submitOrder} from '../store'
+import {getItems, submitOrder, deleteFromCart, updatingQuantity} from '../store'
 
 class Cart extends React.Component {
 
@@ -46,12 +46,15 @@ class Cart extends React.Component {
       }
     ))
     submitObject.products = order
-    // console.log('my cart ', submitObject)
     this.props.submitOrder(submitObject)
   }
 
   render() {
     const items = this.props.items
+    items.forEach(item => {
+      item.subTotal = item.product.price * item.quantity
+    })
+    const total = items.reduce((prev, item) => prev + item.subTotal, 0)
       return (
         <div>
         {
@@ -60,7 +63,6 @@ class Cart extends React.Component {
           <div>
             <h1>Cart Page</h1>
             <h3>These are the items in your cart:</h3>
-            
               <table className="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -69,20 +71,28 @@ class Cart extends React.Component {
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Sub-Total</th>
+                    <th>Remove from cart</th>
                   </tr>
                   </thead>
                   <tbody>
                   {items.map((item, index) => (
                     <tr key={index}>
-                      <th>{item.title}</th>
-                      <th><img className="thumbnail" src={item.image}/></th>
-                      <th>{item.price}</th>
-                      <th>1</th>
-                      <th>calculate</th>
+                      <th>{item.product.title}</th>
+                      <th><img className="thumbnail" src={item.product.image}/></th>
+                      <th>{item.product.price}</th>
+                      <th><select defaultValue={item.quantity} onChange={event => this.props.updateQuantity(item.product.id, +event.target.value)}>{
+                        looping(item.quantity).map(num => (
+                          <option key={num}>{num}</option>
+                        ))
+                        }</select></th>
+                      <th>{item.subTotal}</th>
+                      <th><button className="btn btn-danger" onClick={() => this.props.removeItem(item.product.id)}>x</button></th>
                     </tr>
                   ))}
                   </tbody>
+                  
               </table>
+              <h2>Your total: ${total}</h2>
               {!this.state.checkout 
               ? <button className="btn btn-success" onClick={this.checkingOut}>Checkout</button>
               : 
@@ -108,7 +118,6 @@ class Cart extends React.Component {
  */
 
  const mapState = (state) => {
-   console.log('state ', state)
       return {
         items: state.cart,
         userId: state.currentUser ? state.currentUser.id : null
@@ -118,13 +127,26 @@ class Cart extends React.Component {
  const mapDispatch = (dispatch) =>{
       return {
         getCart: () => {
-          dispatch(getItem())
+          dispatch(getItems())
         },
         submitOrder: (order) => {
           dispatch(submitOrder(order))
+        },
+        removeItem: (productId) => {
+          dispatch(deleteFromCart(productId))
+        },
+        updateQuantity: (productId, newQuantity) => {
+          dispatch(updatingQuantity(productId, newQuantity))
         }
       }
  }
 
  export default withRouter(connect(mapState, mapDispatch)(Cart))
 
+function looping(num) {
+  var min = Math.max(num-5, 1), max = num+5, arr = [];
+  for (var i = min; i <= max; i++) {
+    arr.push(i);
+  }
+  return arr;
+}

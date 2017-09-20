@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getAllProducts } from "../store/allProducts";
+import history from '../history'
 
 class Product extends React.Component {
-
-
 
   componentDidMount() {
     this.props.getProduct();
@@ -24,6 +23,12 @@ class Product extends React.Component {
     } else {
     return (
       <section>
+<<<<<<< HEAD
+        <img className="featuredImage" src={Rice.image}/>
+        <div className="featuredImage display stylizedText" onClick={() => history.push(`/product/${Rice.id}`)}>
+          <p><strong>Product Name:</strong> {Rice.title}</p>
+          <p><strong>Price:</strong> {Rice.price}</p>
+=======
 
         <div className="list-group" style = {{'textAlign':'center', 'padding': '0% 15% 0% 15%'}}>
         <Link to={`/product/${Rice.id}`} className="list-group-item">
@@ -32,6 +37,7 @@ class Product extends React.Component {
           <p className="list-group-item-text">{Rice.description}</p>
           <p className="list-group-item-text">{Rice.price}</p>
           </Link>
+>>>>>>> master
         </div>
       </section>
     )

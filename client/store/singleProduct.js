@@ -71,13 +71,6 @@ export const removeSingleProduct = productId => dispatch => {
   axios.delete(`/api/products/${productId}`).catch(err => console.log(err));
 };
 
-
-export const addToCart = (product) =>
-    dispatch =>
-      axios.post('/auth/me/cart', product)
-
-
-
 /**
  * REDUCER
  */

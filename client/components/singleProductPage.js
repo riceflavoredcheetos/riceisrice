@@ -1,3 +1,35 @@
+<<<<<<< HEAD
+import React from 'react'
+import {connect} from 'react-redux'
+import {withRouter, Link} from 'react-router-dom'
+import {getSingleProduct} from '../store/singleProduct'
+import {getItems, addToCart} from '../store/cart'
+import Review from './reviews'
+
+class SingleProduct extends React.Component{
+
+  constructor() {
+    super()
+    this.state = {
+      quantity: 0
+    }
+    this.handleBuy = this.handleBuy.bind(this)
+  }
+  
+  componentDidMount(){
+    const productId = this.props.match.params.productId
+    this.props.loadProduct(productId)
+    this.props.loadCart()
+  }
+
+  handleBuy(event) {
+    event.preventDefault()
+    this.props.handleSubmit(this.props.singleProduct, this.state.quantity)
+  }
+
+  render(){
+    const product = this.props.singleProduct
+=======
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -104,6 +136,7 @@ class SingleProduct extends React.Component {
     const categories = this.state.categories;
     const selectedCategories = this.state.selectedCategories;
 
+>>>>>>> master
     return (
       <div className="row">
         <div className="col-md-8">
@@ -117,6 +150,17 @@ class SingleProduct extends React.Component {
             <Review />
           </div>
         </div>
+<<<<<<< HEAD
+        <img src = {product.image} />
+        <p>{product.description}</p>
+        <p>{product.price}</p>
+        <div>
+        <form onSubmit={this.handleBuy}>
+          <input style={{width: "25%"}} placeholder={"Please enter quantity to purchase"} onChange={event => this.setState({quantity: event.target.value})}></input>
+          <button type="submit" className="btn btn-success">BUY</button>
+        </form>
+          <Review />
+=======
         <div className="col-md-4">
           <form id="edit-product-form" onSubmit={this.handleUpdate}>
             <div className="media-body">
@@ -221,6 +265,7 @@ class SingleProduct extends React.Component {
           <button className="btn btn-danger" onClick={this.handleDelete}>
             Remove Product
           </button>
+>>>>>>> master
         </div>
       </div>
     );
@@ -233,6 +278,24 @@ class SingleProduct extends React.Component {
 
 const mapState = state => {
   return {
+<<<<<<< HEAD
+    singleProduct: state.SingleProduct,
+    cartItems: state.cart
+  }
+}
+
+const mapDispatch = (dispatch) => {
+    return {
+      loadProduct: (productId) => {
+        dispatch(getSingleProduct(productId))
+      },
+      loadCart: () => {
+        dispatch(getItems())
+      },
+      handleSubmit: (product, quantity) => {
+        dispatch(addToCart({product, quantity: +quantity}))
+      }
+=======
     singleProduct: state.SingleProduct
   };
 };
@@ -253,6 +316,7 @@ const mapDispatch = dispatch => {
     },
     deleteProduct: productId => {
       dispatch(removeSingleProduct(productId));
+>>>>>>> master
     }
   };
 };
