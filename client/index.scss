@@ -80,9 +80,42 @@ body {
 
 .thumbnail {
   background-color: #6B0F0F;
-  border: 1px solid #585050; /* Gray border */
-  border-radius: 4px;  /* Rounded border */
-  padding: 5px; /* Some padding */
-  width: 100px; /* Set a small width */
+  border: 1px solid #585050;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100px;
   height: 100px
+}
+
+.mainPageImg {
+   width: 90px;
+   height: 90px;
+   float: right;
+   margin: 25px 25px 0 0 
+}
+
+.containerBox {
+  height: 25vh;
+  margin-bottom: 10px;
+  border-width: 5px;  
+  border-style: groove;
+  color: gainsboro;
+  margin: 5px 0 5px 0;
+}
+
+.headerText {
+  font-family: Dosis;
+  font-weight: 800
+}
+
+.descText {
+  font-family: Lato
+}
+
+.list-group-item-heading {
+  padding-top: 15px
+}
+
+.formDisplay {
+  margin-top: 15px
 }
