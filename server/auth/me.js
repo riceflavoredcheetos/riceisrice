@@ -53,6 +53,7 @@ router.put('/', (req, res, next) => {
 
 //GET: current cart for user (logged in and guest)
 router.get('/cart', (req, res, next) => {
+    req.session.cart = req.session.cart||[]
     res.json(req.session.cart)
 
 })

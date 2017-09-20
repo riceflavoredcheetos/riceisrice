@@ -118,6 +118,7 @@ class Cart extends React.Component {
  */
 
  const mapState = (state) => {
+   console.log('my state ', state)
       return {
         items: state.cart,
         userId: state.currentUser ? state.currentUser.id : null

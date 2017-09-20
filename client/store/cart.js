@@ -22,11 +22,7 @@ import axios from 'axios'
  export const getItems = () =>
     dispatch =>
       axios.get(`/auth/me/cart`)
-<<<<<<< HEAD
         .then(res => {
-=======
-        .then( (res) => {
->>>>>>> master
           dispatch(getCart(res.data))})
         .catch(err => console.log(err))
  
@@ -44,7 +40,6 @@ import axios from 'axios'
                 dispatch(getCart(res.data))})
               .catch(err => console.log(err))  
 
-<<<<<<< HEAD
  export const deleteFromCart = productId => 
         dispatch => 
             axios.delete(`/auth/me/cart/${productId}`)
@@ -52,12 +47,8 @@ import axios from 'axios'
                 dispatch(getCart(res.data))})
               .catch(err => console.log(err))
  
- export const submitOrder = (order) => 
-    dispatch => 
-=======
  export const submitOrder = (order) =>
     dispatch =>
->>>>>>> master
       axios.post(`/api/invoice`, order)
           .then(res => req.session.cart = [])
           .then(() => console.log('new cart ', req.session.cart))
