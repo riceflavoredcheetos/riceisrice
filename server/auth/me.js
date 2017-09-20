@@ -2,10 +2,12 @@ const router = require('express').Router();
 const User = require('../db/models/user');
 
 addToCart = (cart, newProduct) => {
+    console.log('in here now ', cart, newProduct)
     let newCart = cart.slice()
     if (newCart.length) {
-        var check = 0;
         for (var i = 0; i < newCart.length; i++) {
+            var check = 0;
+            console.log('here is my check ', newCart[i].product.id === newProduct.product.id)
             if (newCart[i].product.id === newProduct.product.id) {
                 newCart[i].quantity += newProduct.quantity;
             } else {
@@ -62,7 +64,7 @@ router.get('/cart', (req, res, next) => {
 router.post('/cart', (req, res, next) => {
     req.session.cart = req.session.cart||[]
     req.session.cart = addToCart(req.session.cart, req.body)
-    res.json(req.body)
+    res.json(req.session.cart)
 })
 
 //PUT request to update cart quantity

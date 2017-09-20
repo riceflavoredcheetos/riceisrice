@@ -30,7 +30,7 @@ import axios from 'axios'
     dispatch => 
        axios.post(`/auth/me/cart`, product)
         .then(res => {
-          dispatch(addCart(res.data))})
+          dispatch(getCart(res.data))})
         .catch(err => console.log(err))
 
  export const updatingQuantity = (productId, newQuantity) => 
