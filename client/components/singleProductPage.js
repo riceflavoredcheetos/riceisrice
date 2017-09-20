@@ -20,7 +20,8 @@ class SingleProduct extends React.Component {
     super(props);
     this.state = {
       categories: [],
-      selectedCategories: []
+      selectedCategories: [],
+      quantity: null
     };
     this.getCategories = this.getCategories.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
@@ -114,7 +115,6 @@ class SingleProduct extends React.Component {
     const product = this.props.singleProduct;
     const categories = this.state.categories;
     const selectedCategories = this.state.selectedCategories;
-
     return (
       <div className="row">
         <div className="col-md-8">
